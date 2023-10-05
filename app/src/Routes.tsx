@@ -1,35 +1,25 @@
 import Home from "./scenes/Home";
-import Chat from "./scenes/Home";
-import Cart from "./scenes/Home";
-import Profile from "./scenes/Home";
-import Order from "./scenes/Home";
-import Shipping from "./scenes/Home";
+import Chat from "./scenes/Chat";
+import Cart from "./scenes/Cart";
+import Profile from "./scenes/Profile";
 
 //define routes here for react-navigation
-export const Routes = [
+export const Routes: Path[] = [
   {
     name: "Home",
-    component: Home ,
-  },
-  {
-    name: "Chat",
-    component: Chat ,
-  },
-  {
-    name: "Cart",
-    component: Cart ,
+    component: Home,
+    index: true,
   },
   {
     name: "Profile",
-    component:  Profile ,
+    component: Profile,
   },
   {
-    name: "Order",
-    component: Order ,
+    name: "Cart",
+    component: Cart,
   },
   {
-    name: "Shipping",
-    component:  Shipping ,
+    name: "Chat",
+    component: Chat,
   },
-
 ];
