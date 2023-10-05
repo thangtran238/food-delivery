@@ -1,12 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import Button from './app/src/components/Button';
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <View>
+      <Button styleType="long_blue" text={{ text: 'Primary Button' }} />
+      <Button styleType="long_white" text={{ text: 'Primary Button' }} />
+      <Button styleType="short" text={{ text: 'Buy now' }} />
+      <Button
+        styleType="custom"
+        text={{ text: '<' }}
+        style={{
+          // backgroundColor: 'green',
+          // borderRadius: 20,
+          // padding: 15,
+          width: 60,
+          height: 60,
+        }}
+      />
+    </View> 
   );
 }
 
