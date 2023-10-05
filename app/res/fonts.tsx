@@ -3,6 +3,4 @@ export const fonts = {
   bold: 700,
   normal: 400,
   thin: 300,
-  color: "#000",
-  "sub-color": "#ccc"
 };

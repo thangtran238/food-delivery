@@ -5,3 +5,4 @@ export const dimensions = {
   width: dWidth,
   height: dHeight,
 };
+

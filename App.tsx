@@ -1,32 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Button from './app/src/components/Button';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Routes } from './app/src/Routes';
+
+const Stack = createNativeStackNavigator();
+
+const SCENES = Routes.map((route) => (
+  <Stack.Screen name={route.name} component={route.component} />
+));
+
 export default function App() {
   return (
-    <View>
-      <Button styleType="long_blue" text={{ text: 'Primary Button' }} />
-      <Button styleType="long_white" text={{ text: 'Primary Button' }} />
-      <Button styleType="short" text={{ text: 'Buy now' }} />
-      <Button
-        styleType="custom"
-        text={{ text: '<' }}
-        style={{
-          // backgroundColor: 'green',
-          // borderRadius: 20,
-          // padding: 15,
-          width: 60,
-          height: 60,
-        }}
-      />
-    </View> 
+    <NavigationContainer>
+      <Stack.Navigator>
+        {SCENES}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
