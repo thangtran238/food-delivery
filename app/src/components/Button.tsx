@@ -2,6 +2,9 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 type Props = {
+    type?: {
+
+    }
     style?: {
         border?: string,
         padding?: number,
@@ -20,4 +23,5 @@ const Button = (props: Props) => {
 
 export default Button
 
-const styles = StyleSheet.create({})
+
+
