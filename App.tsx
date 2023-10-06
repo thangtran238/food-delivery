@@ -5,7 +5,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import colors from "./app/res/colors";
 import { Routes } from "./app/src/Routes";
 import * as Animatable from "react-native-animatable";
-import Icon, { Icons } from "./app/src/components/Icon";
+import IconCom, { Icons } from "./app/src/components/Icon";
 
 const TabArr = Routes;
 
@@ -49,7 +49,7 @@ const TabButton = ({
           ]}
         />
         <View style={[styles.btn]}>
-          <Icon
+          <IconCom
             type={item.iconType}
             name={item.icon}
             color={focused ? colors.white : colors.primary}

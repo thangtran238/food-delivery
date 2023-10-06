@@ -1,6 +1,7 @@
 import { View,  StyleSheet } from "react-native";
 import React from "react";
-import { Icon } from "react-native-vector-icons/Icon";
+import Icon from 'react-native-vector-icons/Ionicons';
+
 type Props = {
   style: {
     borderRadius: number;

@@ -4,6 +4,9 @@ import IconPress from "./IconPress";
 import R from "../R";
 
 
+
+
+
 type Props = {
   navigation: string;
 };
@@ -36,7 +39,7 @@ const Heading = (props: Props) => {
           icon={"chevron-back-outline"}
           style={{
             borderRadius: 6,
-            backgroundColor: R.colors.substance,
+            backgroundColor: 'white',
             boxShadow: "1px 2px 4px 2px #ccc",
           }}
         />
@@ -52,3 +55,18 @@ const Heading = (props: Props) => {
 };
 
 export default Heading;
+
+// import { View, Text } from 'react-native'
+// import React from 'react'
+
+// type Props = {}
+
+// const Heading = (props: Props) => {
+//   return (
+//     <View>
+//       <Text>Heading</Text>
+//     </View>
+//   )
+// }
+
+// export default Heading

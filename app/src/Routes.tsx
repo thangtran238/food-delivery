@@ -2,7 +2,7 @@ import Home from "./scenes/Home";
 import Chat from "./scenes/Chat";
 import Cart from "./scenes/Cart";
 import Profile from "./scenes/Profile";
-import Icon, { Icons as IconTypes } from "./components/Icon";
+import IconCom, { Icons as IconTypes } from "./components/Icon";
 import colors from "../res/colors";
 
 type ComponentType = React.FC<any>;
@@ -31,7 +31,7 @@ export const Routes: Path[] = [
     route: 'Profile',
     label: 'Profile',
     iconType: IconTypes.Feather,
-    icon: 'Profile',
+    icon: 'home',
     component: Profile,
     color: colors.green,
     alphaClr: colors.greenAlpha,
@@ -40,7 +40,7 @@ export const Routes: Path[] = [
     route: 'Cart',
     label: 'Cart',
     iconType: IconTypes.Feather,
-    icon: 'cart',
+    icon: 'home',
     component: Cart,
     color: colors.red,
     alphaClr: colors.redAlpha,
@@ -49,7 +49,7 @@ export const Routes: Path[] = [
     route: 'Chat',
     label: 'Chat',
     iconType: IconTypes.FontAwesome,
-    icon: 'Chat',
+    icon: 'home',
     component: Chat,
     color: colors.purple,
     alphaClr: colors.purpleAlpha,
