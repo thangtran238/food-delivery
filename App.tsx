@@ -45,7 +45,7 @@ const TabButton = ({
           ref={viewRef}
           style={[
             StyleSheet.absoluteFillObject,
-            { backgroundColor: item.color, borderRadius: 16 },
+            { backgroundColor: item.color, borderRadius: 20 },
           ]}
         />
         <View style={[styles.btn]}>
@@ -80,12 +80,12 @@ export default function App() {
         screenOptions={{
           headerShown: false,
           tabBarStyle: {
-            height: 60,
+            height: 80,
             position: "absolute",
             bottom: 16,
             right: 16,
             left: 16,
-            borderRadius: 8,
+            borderRadius: 26,
           },
         }}
       >
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   btn: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
-    borderRadius: 16,
+    padding: 16,
+    borderRadius: 10,
   },
 });

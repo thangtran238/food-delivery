@@ -1,35 +1,56 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import SearchBar from 'react-native-search-bar';
+import { View, StyleSheet, TextInput } from 'react-native';
+import R from '../R';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 type SearchBarWithRProps = {};
 
 const SearchBarWithR: React.FC<SearchBarWithRProps> = () => {
   return (
     <View style={styles.container}>
-      <SearchBar
-        placeholder="Search..."
-        barStyle="default"
-        onChangeText={(searchText: string) => {
-          // Handle search text changes here
-          console.log(searchText);
-        }}
-        onSearchButtonPress={(searchText: string) => {
-          // Handle search button press here
-          console.log(searchText);
-        }}
-        onCancelButtonPress={() => {
-          // Handle cancel button press here
-        }}
-      />
+      <View style={styles.searchBar}>
+        <Icon name={'search'} size={28} color={R.colors.secondary} style={styles.icon} />
+        <TextInput style={styles.input} placeholder='What do you want to order' />
+
+      </View>
+      <Icon style={styles.sub_icon} name={'options'} size={21} color={R.colors.secondary} />
+
     </View>
+
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    // Add your container styles here
+    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 25
   },
+  searchBar: {
+    marginRight: 12,
+    backgroundColor: R.colors.purple,
+    height: 60,
+    borderRadius: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    width: "85%"
+  },
+  input: {
+    fontSize: R.strings.h3,
+    color: R.colors.secondary
+  }, icon: {
+    marginRight: 12
+  },
+  sub_icon: {
+    padding: 20,
+    height: 60,
+    width: "15%",
+    borderRadius: 15,
+    marginRight: 30,
+    backgroundColor: R.colors.purple
+  }
 });
 
 export default SearchBarWithR;

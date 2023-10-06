@@ -5,6 +5,7 @@ export default {
   substance: "#9FA6AA",
   fontColor: "#000",
   subFontColor: "#ccc",
+  purple: '#F1EEFF',
 
   // primary: '#637aff',
   primaryDark: '#2759ff',
@@ -20,10 +21,8 @@ export default {
   red: '#ff2f68',
   lightRed: '#ff4f7e',
   darkRed: '#d9365e',
-  purple: '#8f06e4',
   skyBlue: 'skyblue',
   yellow: '#f8c907',
-  pink: '#ff4c98',
   gold: 'gold',
   line: '#282C35',
   darkGray: '#999999',

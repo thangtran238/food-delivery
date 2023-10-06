@@ -1,9 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
-
-import R from "../R";
 import SearchBarWithR from "./SearchBarWithR";
+import R from "../R";
 
 
 
@@ -16,10 +15,12 @@ type Props = {
 const Heading = (props: Props) => {
   const mainHeading = () => {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Find Your Favorite Food</Text>
-        <Icon style={styles.icon} name={"notifications-outline"} size={24} color={R.colors.secondary} />
-        {/* <SearchBarWithR /> */}
+      <View >
+        <View style={styles.container}>
+          <Text style={styles.text}>Find Your Favorite Food</Text>
+          <Icon style={styles.icon} name={"notifications-outline"} size={22} color={R.colors.secondary} />
+
+        </View>
       </View>
     );
   };
@@ -27,7 +28,7 @@ const Heading = (props: Props) => {
   const subHeading = () => {
     return (
       <View>
-        <Icon name={"notifications-outline"} size={24} color={R.colors.secondary} />
+        <Icon name={"notifications-outline"} size={45} color={R.colors.secondary} />
       </View>
     );
   };
@@ -43,11 +44,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 18,
-    paddingVertical: 36,
+    paddingHorizontal: 31,
+    paddingTop: 60,
+    paddingBottom: 18,
   },
   text: {
-    width: "40%",
+    width: "50%",
     fontWeight: R.fonts.bold,
     fontSize: R.strings.h1,
 
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
   icon: {
     backgroundColor: R.colors.primary,
     borderRadius: 8,
-    padding: 8
+    padding: 11,
   }
 });
 export default Heading;
