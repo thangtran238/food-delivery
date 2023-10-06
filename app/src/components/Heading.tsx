@@ -1,7 +1,9 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import IconPress from "./IconPress";
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import R from "../R";
+import SearchBarWithR from "./SearchBarWithR";
 
 
 
@@ -14,18 +16,10 @@ type Props = {
 const Heading = (props: Props) => {
   const mainHeading = () => {
     return (
-      <View>
-        <Text>Find Your Favorite Food</Text>
-        <IconPress
-          color={R.colors.primary}
-          size={24}
-          icon={"notifications-outline"}
-          style={{
-            borderRadius: 6,
-            backgroundColor: R.colors.primary,
-            boxShadow: "1px 2px 4px 2px #ccc",
-          }}
-        />
+      <View style={styles.container}>
+        <Text style={styles.text}>Find Your Favorite Food</Text>
+        <Icon style={styles.icon} name={"notifications-outline"} size={24} color={R.colors.secondary} />
+        {/* <SearchBarWithR /> */}
       </View>
     );
   };
@@ -33,16 +27,7 @@ const Heading = (props: Props) => {
   const subHeading = () => {
     return (
       <View>
-        <IconPress
-          color={R.colors.primary}
-          size={24}
-          icon={"chevron-back-outline"}
-          style={{
-            borderRadius: 6,
-            backgroundColor: 'white',
-            boxShadow: "1px 2px 4px 2px #ccc",
-          }}
-        />
+        <Icon name={"notifications-outline"} size={24} color={R.colors.secondary} />
       </View>
     );
   };
@@ -53,20 +38,25 @@ const Heading = (props: Props) => {
 
   return choseHeading()
 };
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 18,
+    paddingVertical: 36,
+  },
+  text: {
+    width: "40%",
+    fontWeight: R.fonts.bold,
+    fontSize: R.strings.h1,
 
+  },
+  icon: {
+    backgroundColor: R.colors.primary,
+    borderRadius: 8,
+    padding: 8
+  }
+});
 export default Heading;
 
-// import { View, Text } from 'react-native'
-// import React from 'react'
-
-// type Props = {}
-
-// const Heading = (props: Props) => {
-//   return (
-//     <View>
-//       <Text>Heading</Text>
-//     </View>
-//   )
-// }
-
-// export default Heading

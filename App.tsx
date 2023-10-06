@@ -52,7 +52,7 @@ const TabButton = ({
           <IconCom
             type={item.iconType}
             name={item.icon}
-            color={focused ? colors.white : colors.primary}
+            color={focused ? colors.primary : colors.secondary}
             style={{ fontSize: 24 }}
           />
           <Animatable.View ref={textViewRef}>
@@ -73,7 +73,7 @@ const TabButton = ({
   );
 };
 
-export default function AnimTab3() {
+export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -85,7 +85,7 @@ export default function AnimTab3() {
             bottom: 16,
             right: 16,
             left: 16,
-            borderRadius: 16,
+            borderRadius: 8,
           },
         }}
       >
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   btn: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 8,
+    padding: 10,
     borderRadius: 16,
   },
 });
