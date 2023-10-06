@@ -3,6 +3,13 @@ import Chat from "./scenes/Chat";
 import Cart from "./scenes/Cart";
 import Profile from "./scenes/Profile";
 
+type ComponentType = React.FC<any>;
+
+interface Path {
+  name: string,
+  component: ComponentType,
+  index?:boolean 
+}
 //define routes here for react-navigation
 export const Routes: Path[] = [
   {
