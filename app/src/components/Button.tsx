@@ -13,7 +13,7 @@ type Props = {
     fontsize?: number
   },
   text?: {
-    text?: string,
+    text?: string
   }
 }
 

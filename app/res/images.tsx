@@ -1,4 +1,4 @@
 
 export const images = {
-  a:'D:\food-delivery\app\res\image\an.png'
+  profile:'image/Profile.png'
 };
