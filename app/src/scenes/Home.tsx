@@ -1,32 +1,12 @@
 import { View, Text, ImageBackground, StyleSheet, Image } from 'react-native'
 import React from 'react'
-import Heading from '../components/Heading'
-import { GET_NAV } from '../util/constant'
-import SearchBarWithR from '../components/SearchBarWithR'
-import R from '../R'
-import Button from '../components/Button'
+
 type Props = {}
 
 const Home = (props: Props) => {
   return (
-    <View style={styles.imageBackground}>
-      <Heading navigation={GET_NAV()} />
-      <SearchBarWithR />
-      <View style={styles.imageBackground}>
-        <ImageBackground source={{ uri: R.images.a }} resizeMode='cover' style={styles.image} />
-        <Image source={{ uri: R.images.a }} resizeMode='cover' style={styles.image} />
-      </View>
-      <View style={styles.box_container}>
-        <Image source={require('../../res/image/icream.png')} style={{ width: 200, height: 200 }} resizeMode="contain"></Image>
-        <View style={styles.box}>
-          <Text style={styles.text}>Special Deal For October</Text>
-          <Button styleType='short'></Button>
-        </View>
-        <View>
-          <Text>ABkskja</Text>
-        </View>
-      </View>
-
+    <View>
+      <Text>Home</Text>
     </View>
   )
 }
@@ -65,3 +45,10 @@ const styles = StyleSheet.create({
 });
 
 export default Home
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  }
+});
