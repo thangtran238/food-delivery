@@ -1,4 +1,5 @@
 
 export const images = {
-  profile:'image/Profile.png'
+  profile:'image/Profile.png',
+  voucher: 'image/voucher.png'
 };

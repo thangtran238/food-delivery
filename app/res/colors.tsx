@@ -5,7 +5,7 @@ export default {
   substance: "#9FA6AA",
   fontColor: "#000",
   subFontColor: "#ccc",
-  purple: '#F1EEFF',
+  purple: '#F1EFFF',
 
   // primary: '#637aff',
   primaryDark: '#fcfffd',
@@ -29,7 +29,7 @@ export default {
 
   darkOverlayColor: 'rgba(0, 0, 0, 0.4)',
   darkOverlayColor2: 'rgba(0, 0, 0, 0.8)',
-  lightOverlayColor: 'rgba(255, 255, 255, 0.6)',
+  lightOverlayColor: 'rgba(254, 254, 250, 0.4)',
   primaryAlpha: 'rgba(99, 122, 255, 0.15)',
   redAlpha: 'rgba(255, 84, 84, 0.15)',
   greenAlpha: 'rgba(96, 197, 168, 0.15)',

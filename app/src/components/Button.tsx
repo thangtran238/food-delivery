@@ -69,7 +69,7 @@ const Button = (props: Props) => {
   };
 
   return (
-    <View>
+    <View style={styles.border}>
       <Text style={[styles.button, buttonStyle]}>
         {buttonText.text}
       </Text>

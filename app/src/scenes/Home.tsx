@@ -4,6 +4,7 @@ import Heading from '../components/Heading'
 import { GET_NAV } from '../util/constant'
 import SearchBarWithR from '../components/SearchBarWithR'
 import R from '../R'
+import AppOption from '../components/AppOption'
 type Props = {}
 
 const Home = (props: Props) => {
