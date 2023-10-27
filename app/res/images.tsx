@@ -1,5 +1,6 @@
 
 export const images = {
-  a:'D:\food-delivery\app\res\image\an.png',
-  icream:'./image/icream.png'
+  profile:'image/Profile.png',
+  voucher: 'image/voucher.png',
+  an: 'image/an.png',
 };

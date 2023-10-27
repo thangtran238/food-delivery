@@ -13,7 +13,7 @@ type Props = {
     fontsize?: number
   },
   text?: {
-    text?: string,
+    text?: string
   }
 }
 
@@ -56,7 +56,7 @@ const Button = (props: Props) => {
         width: props.style?.width || 45,
         height: props.style?.height || 45,
         padding: props.style?.padding || 10,
-        fontSize: props.style?.fontsize || 10,
+        fontSize: props.style?.fontsize || 20,
         color: props.style?.color || '#6B50F6',
       };
       break;
