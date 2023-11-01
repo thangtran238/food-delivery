@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     width: "50%",
     fontWeight: R.fonts.bold,
     fontSize: R.strings.h1,
-
   },
   icon: {
     backgroundColor: R.colors.primary,

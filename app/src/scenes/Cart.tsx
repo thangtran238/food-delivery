@@ -1,14 +1,136 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
+import {useState, } from 'react'
+import Button from '../components/Button'
+import R from '../R'
+import Item_cart from '../components/Item_cart'
 
 type Props = {}
 
+
+
 const Cart = (props: Props) => {
-  return (
-    <View>
-      <Text>Cart</Text>
+
+  const [totalQuantity, setTotalQuantity] = useState(0); 
+
+  const handleQuantityChange = () => {
+    // setTotalQuantity(totalQuantity + quantityChange);
+  };
+
+  return ( 
+    <View style={styles.container}>
+      <View style={styles.back}>
+        <Button
+          styleType="custom"
+          text={{ text: "<" }} />
+      </View>
+
+      <Text style={styles.text}>Order details</Text>
+
+      <ScrollView>
+        <Item_cart
+          styleType="secondary"
+          source={{ image_url: require('../../res/image/food1.png') }}
+          text={{
+            food_name: 'Herbal Pancake',
+            restaurant: 'Wijie Resto',
+            price: 7,
+          }}
+        />
+      </ScrollView>
+
+
+      {/* </View> */}
+
+
+      <View style={styles.total}>
+        <View style={styles.container_total_text}>
+          <View style={styles.left_total_text}>
+            <Text style={styles.first_line}>Sub-Total</Text>
+            <Text style={styles.whiteText}>Delivery Charge</Text>
+            <Text style={styles.whiteText}>Discount</Text>
+            <Text style={styles.total_highlight}>Total</Text>
+          </View>
+          <View style={styles.right_total_text}>
+            <Text style={styles.first_line}>10$</Text>
+            <Text style={styles.whiteText}>10$</Text>
+            <Text style={styles.whiteText}>10$</Text>
+            <Text style={styles.total_highlight}>10$</Text>
+          </View>
+        </View>
+        <Button styleType='long_white' text={{ text: "Place My Order" }}></Button>
+        <View style={styles.space}></View>
+      </View>
+
     </View>
   )
 }
 
 export default Cart
+
+const styles = StyleSheet.create({
+
+  text: {
+    width: "50%",
+    fontWeight: R.fonts.bold,
+    fontSize: R.strings.h1,
+  },
+  container: {
+    flex: 1,
+    marginLeft: 23,
+    marginTop: 38,
+  },
+  back: {
+    marginRight: 'auto',
+  },
+
+
+
+
+  total: {
+    backgroundColor: R.colors.secondary,
+    width: 'auto',
+    height: 'auto',
+    borderRadius: 22,
+    justifyContent: 'flex-end',
+    marginBottom: 125,
+    marginRight: 25,
+  },
+  container_total_text: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 25,
+
+  },
+  left_total_text: {
+    width: 'auto',
+    height: "auto",
+    borderRadius: 22,
+    color: 'white',
+  },
+  right_total_text: {
+    width: 'auto',
+    height: "auto",
+    borderRadius: 22,
+    color: 'white',
+  },
+  first_line: {
+    color: 'white',
+    marginTop: 10,
+    fontWeight: 'bold',
+  },
+  whiteText: {
+    color: 'white',
+    marginBottom: 2,
+    fontWeight: 'bold',
+  },
+  total_highlight: {
+    color: 'white',
+    marginTop: 10,
+    marginBottom: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  space: {
+    height: 15,
+  },
+});

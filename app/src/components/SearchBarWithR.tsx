@@ -14,7 +14,6 @@ const SearchBarWithR: React.FC<SearchBarWithRProps> = () => {
 
       </View>
       <Icon style={styles.sub_icon} name={'options'} size={21} color={R.colors.secondary} />
-
     </View>
 
   );

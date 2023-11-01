@@ -9,13 +9,13 @@ const Banner = (props: Props) => {
         <View>
             <View>
                 {/* <ImageBackground source={{ uri: R.images.a }} resizeMode='cover' style={styles.image} /> */}
-                <Image source={{ uri: R.images.a }} resizeMode='cover' style={styles.image} />
+                <Image source={{ uri: R.images.an }} resizeMode='cover' style={styles.image} />
             </View>
             <View style={styles.box_container}>
                 <Image source={require('../../res/image/icream.png')} style={{ width: 200, height: 200}} resizeMode="contain"></Image>
                 <View style={styles.box}>
                     <Text style={styles.text}>Special Deal For October</Text>
-                    <Button styleType='short'></Button>
+                    <Button styleType='short' text={{text: "Buy Now"}}></Button>
                 </View>
             </View>
         </View>
