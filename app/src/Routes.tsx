@@ -1,9 +1,11 @@
-import Home from "./scenes/Home";
+
 import Chat from "./scenes/Chat";
 import Cart from "./scenes/Cart";
-import Profile from "./scenes/Profile";
 import IconCom, { Icons as IconTypes } from "./components/Icon";
 import colors from "../res/colors";
+import HomeStack from "./scenes/home/homeStack";
+import ProfileStack from "./scenes/profile/profileStack";
+import Profile from "./scenes/profile/screen/Profile";
 
 type ComponentType = React.FC<any>;
 
@@ -23,7 +25,7 @@ export const Routes: Path[] = [
     label: 'Home',
     iconType: IconTypes.Feather,
     icon: 'home',
-    component: Home,
+    component: HomeStack,
     color: colors.secondary,
     alphaClr: colors.secondary,
   },
@@ -32,7 +34,7 @@ export const Routes: Path[] = [
     label: 'Profile',
     iconType: IconTypes.Feather,
     icon: 'user',
-    component: Profile,
+    component: ProfileStack,
     color: colors.secondary,
     alphaClr: colors.secondary,
   },

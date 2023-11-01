@@ -1,57 +1,57 @@
-import { View, StyleSheet, Text, ScrollView, Image } from 'react-native'
+import { View, StyleSheet, Text, ScrollView, Image,TouchableOpacity } from 'react-native'
 import React from 'react'
-import Heading from '../components/Heading'
-import { GET_NAV } from '../util/constant'
-import SearchBarWithR from '../components/SearchBarWithR'
-import Banner from '../components/Banner'
-import Shop from '../components/Shop'
-import ViewMore from '../components/ViewMore'
-import R from '../R'
-import Item from '../components/Item'
+import Heading from '../../../components/Heading'
+import { GET_NAV } from '../../../util/constant'
+import SearchBarWithR from '../../../components/SearchBarWithR'
+import Banner from '../../../components/Banner'
+import Shop from '../../../components/Shop'
+import ViewMore from '../../../components/ViewMore'
+import R from '../../../R'
+import Item from '../../../components/Item'
 
-type Props = {}
 
-const Home = (props: Props) => {
+const Home:React.FC<{ navigation: Navigator }> = ({ navigation }) => {
   return (
     <View style={styles.imageBackground}>
       <Heading navigation={GET_NAV()} />
 
       <ScrollView>
-        <SearchBarWithR />
+        <SearchBarWithR navigation={navigation}/>
         <Banner />
-
+        <TouchableOpacity onPress={() => navigation.navigate('PopularRestaurant')}>
         <ViewMore
           text={{
             title: 'Nearest Restaurant',
             viewmore: 'View More',
           }}
         />
+        </TouchableOpacity>
 
         <ScrollView horizontal>
           <View style={styles.shop_container}>
             <Shop
-              source={{ image_url: require('../../res/image/Restaurant1.png') }}
+              source={{ image_url: require('../../../../res/image/Restaurant1.png') }}
               text={{
                 title: 'Vergan Store',
                 time: '12 minutes',
               }}
             />
             <Shop
-              source={{ image_url: require('../../res/image/Restaurant2.png') }}
+              source={{ image_url: require('../../../../res/image/Restaurant2.png') }}
               text={{
                 title: 'Smart Resto',
                 time: '18 minutes',
               }}
             />
             <Shop
-              source={{ image_url: require('../../res/image/Restaurant3.png') }}
+              source={{ image_url: require('../../../../res/image/Restaurant3.png') }}
               text={{
                 title: 'Healthy Food',
                 time: '8 minutes',
               }}
             />
             <Shop
-              source={{ image_url: require('../../res/image/Restaurant4.png') }}
+              source={{ image_url: require('../../../../res/image/Restaurant4.png') }}
               text={{
                 title: 'Vergan Food',
                 time: '13 minutes',
@@ -60,17 +60,17 @@ const Home = (props: Props) => {
 
           </View>
         </ScrollView>
-
+        <TouchableOpacity onPress={() => navigation.navigate('PopularMenu')}>
         <ViewMore
           text={{
             title: 'Popular Menu',
             viewmore: 'View More',
           }}
         />
-
+        </TouchableOpacity>
         <Item
           styleType="primary"
-          source={{ image_url: require('../../res/image/food1.png') }}
+          source={{ image_url: require('../../../../res/image/food1.png') }}
           text={{
             food_name: 'Herbal Pancake',
             restaurant: 'Wijie Resto',
@@ -79,7 +79,7 @@ const Home = (props: Props) => {
         />
         <Item
           styleType="primary"
-          source={{ image_url: require('../../res/image/food2.png') }}
+          source={{ image_url: require('../../../../res/image/food2.png') }}
           text={{
             food_name: 'Fruit Salad',
             restaurant: 'Warung Herbal',
@@ -88,7 +88,7 @@ const Home = (props: Props) => {
         />
         <Item
           styleType="secondary"
-          source={{ image_url: require('../../res/image/food3.png') }}
+          source={{ image_url: require('../../../../res/image/food3.png') }}
           text={{
             food_name: 'Green Noddle',
             restaurant: 'Warung Resto',
@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
   image: { flex: 1 },
   shop_container: {
     flexDirection: 'row',
+    paddingVertical: 12
   },
 
 });

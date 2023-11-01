@@ -26,7 +26,7 @@ const Shop = (props: Props) => {
         <View style={styles.container}>
             <Image source={imageSource} style={styles.image} />
             <Text style={styles.title}>{text.title}</Text>
-            <Text style={styles.time}>{text.time}</Text>
+            <Text style={styles.time}>{text.time} mins</Text>
         </View>
     );
 };
@@ -43,6 +43,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 24,
         marginLeft: 30,
+        shadowColor: "#a8bed2",
+        shadowOpacity: 1,
+        shadowRadius: 6,
+        shadowOffset: {
+          width: 2,
+          height: 2,
+        },
     },
     image: {
         width: 100,
