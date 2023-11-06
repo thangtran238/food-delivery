@@ -21,98 +21,98 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
   return (
     <View style={styles.imageBackground}>
       <ImageBackground source={require("../../../../res/image/bg.png")}>
-      <Heading navigation={GET_NAV()} />
+        <Heading navigation={navigation} />
 
-      <ScrollView>
-        <SearchBarWithR navigation={navigation} />
-        <Banner />
-        <TouchableOpacity
-          onPress={() => navigation.navigate("PopularRestaurant")}
-        >
-          <ViewMore
+        <ScrollView>
+          <SearchBarWithR navigation={navigation} />
+          <Banner />
+          <TouchableOpacity
+            onPress={() => navigation.navigate("PopularRestaurant")}
+          >
+            <ViewMore
+              text={{
+                title: "Nearest Restaurant",
+                viewmore: "View More",
+              }}
+            />
+          </TouchableOpacity>
+
+          <ScrollView horizontal>
+            <View style={styles.shop_container}>
+              <Shop
+                source={{
+                  image_url: require("../../../../res/image/Restaurant1.png"),
+                }}
+                text={{
+                  title: "Vergan Store",
+                  time: "12 minutes",
+                }}
+              />
+              <Shop
+                source={{
+                  image_url: require("../../../../res/image/Restaurant2.png"),
+                }}
+                text={{
+                  title: "Smart Resto",
+                  time: "18 minutes",
+                }}
+              />
+              <Shop
+                source={{
+                  image_url: require("../../../../res/image/Restaurant3.png"),
+                }}
+                text={{
+                  title: "Healthy Food",
+                  time: "8 minutes",
+                }}
+              />
+              <Shop
+                source={{
+                  image_url: require("../../../../res/image/Restaurant4.png"),
+                }}
+                text={{
+                  title: "Vergan Food",
+                  time: "13 minutes",
+                }}
+              />
+            </View>
+          </ScrollView>
+          <TouchableOpacity onPress={() => navigation.navigate("PopularMenu")}>
+            <ViewMore
+              text={{
+                title: "Popular Menu",
+                viewmore: "View More",
+              }}
+            />
+          </TouchableOpacity>
+          <Item
+            styleType="primary"
+            source={{ image_url: require("../../../../res/image/food1.png") }}
             text={{
-              title: "Nearest Restaurant",
-              viewmore: "View More",
+              food_name: "Herbal Pancake",
+              restaurant: "Wijie Resto",
+              price: 7,
             }}
           />
-        </TouchableOpacity>
-
-        <ScrollView horizontal>
-          <View style={styles.shop_container}>
-            <Shop
-              source={{
-                image_url: require("../../../../res/image/Restaurant1.png"),
-              }}
-              text={{
-                title: "Vergan Store",
-                time: "12 minutes",
-              }}
-            />
-            <Shop
-              source={{
-                image_url: require("../../../../res/image/Restaurant2.png"),
-              }}
-              text={{
-                title: "Smart Resto",
-                time: "18 minutes",
-              }}
-            />
-            <Shop
-              source={{
-                image_url: require("../../../../res/image/Restaurant3.png"),
-              }}
-              text={{
-                title: "Healthy Food",
-                time: "8 minutes",
-              }}
-            />
-            <Shop
-              source={{
-                image_url: require("../../../../res/image/Restaurant4.png"),
-              }}
-              text={{
-                title: "Vergan Food",
-                time: "13 minutes",
-              }}
-            />
-          </View>
+          <Item
+            styleType="primary"
+            source={{ image_url: require("../../../../res/image/food2.png") }}
+            text={{
+              food_name: "Fruit Salad",
+              restaurant: "Warung Herbal",
+              price: 9,
+            }}
+          />
+          <Item
+            styleType="secondary"
+            source={{ image_url: require("../../../../res/image/food3.png") }}
+            text={{
+              food_name: "Green Noddle",
+              restaurant: "Warung Resto",
+              price: 12,
+            }}
+          />
         </ScrollView>
-        <TouchableOpacity onPress={() => navigation.navigate("PopularMenu")}>
-          <ViewMore
-            text={{
-              title: "Popular Menu",
-              viewmore: "View More",
-            }}
-          />
-        </TouchableOpacity>
-        <Item
-          styleType="primary"
-          source={{ image_url: require("../../../../res/image/food1.png") }}
-          text={{
-            food_name: "Herbal Pancake",
-            restaurant: "Wijie Resto",
-            price: 7,
-          }}
-        />
-        <Item
-          styleType="primary"
-          source={{ image_url: require("../../../../res/image/food2.png") }}
-          text={{
-            food_name: "Fruit Salad",
-            restaurant: "Warung Herbal",
-            price: 9,
-          }}
-        />
-        <Item
-          styleType="secondary"
-          source={{ image_url: require("../../../../res/image/food3.png") }}
-          text={{
-            food_name: "Green Noddle",
-            restaurant: "Warung Resto",
-            price: 12,
-          }}
-        />
-      </ScrollView>
       </ImageBackground>
     </View>
   );

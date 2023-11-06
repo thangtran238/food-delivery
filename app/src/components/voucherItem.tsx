@@ -35,7 +35,7 @@ const VoucherItem = (props: Props) => {
       height: 122,
       flexDirection: "row",
       backgroundColor: `${props.theme}`,
-      justifyContent: "space-around",
+      justifyContent: "space-between",
       alignItems: "center",
       paddingRight: 12,
       overflow: "hidden",

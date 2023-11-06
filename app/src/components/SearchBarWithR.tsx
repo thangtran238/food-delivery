@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     color: R.colors.secondary,
   },
   wrapper: {
+    borderRadius: 15,
     padding: 20,
     height: 60,
     flex: 0.1,

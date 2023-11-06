@@ -16,24 +16,35 @@ const Voucher: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
         style={styles.image}
       >
         <View style={styles.wrapper}>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-            <Button styleType="custom" text={{ text: "<" }} />
-          </TouchableOpacity>
           <View>
-            <Text style={styles.font}>Voucher Promo</Text>
-            <View style={styles.subWrapper}>
-              <VoucherItem
-                image_url={require("../../res/image/Image.png")}
-                theme={R.colors.secondary}
-                fontColor={R.colors.white}
-              />
-              <VoucherItem
-                image_url={require("../../res/image/Image2.png")}
-                theme={"#E9F7BA"}
-                fontColor={"#6B3A5B"}
-              />
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.goBack()}
+            >
+              <Button styleType="custom" text={{ text: "<" }} />
+            </TouchableOpacity>
+            <View>
+              <Text style={styles.font}>Voucher Promo</Text>
+              <View style={styles.subWrapper}>
+                <VoucherItem
+                  image_url={require("../../res/image/Image.png")}
+                  theme={R.colors.secondary}
+                  fontColor={R.colors.white}
+                />
+                <VoucherItem
+                  image_url={require("../../res/image/Image2.png")}
+                  theme={"#E9F7BA"}
+                  fontColor={"#6B3A5B"}
+                />
+              </View>
             </View>
           </View>
+
+          <Button
+            styleType="long_blue"
+            text={{ text: "Check out" }}
+            style={styles.checkout}
+          />
         </View>
       </ImageBackground>
     </View>
@@ -50,21 +61,27 @@ const styles = StyleSheet.create({
     height: R.dimensions.height,
   },
   wrapper: {
+    height: R.dimensions.height,
     padding: 20,
+    flexDirection: "column",
+    justifyContent: "space-between"
   },
   button: {
-    alignItems: "flex-start"
+    alignItems: "flex-start",
   },
   font: {
     fontWeight: R.fonts.bold,
     fontSize: R.strings.h2,
     paddingHorizontal: 12,
-    marginVertical: 20
+    marginVertical: 20,
   },
 
   subWrapper: {
-    paddingVertical: "auto"
-  }
+    paddingVertical: "auto",
+  },
+  checkout: {
+    marginTop: (R.dimensions.height * 2) / 3,
+  },
 });
 
 //make this component available to the app

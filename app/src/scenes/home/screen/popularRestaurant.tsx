@@ -22,7 +22,8 @@ const PopularRestaurant: React.FC<{ navigation: Navigator }> = ({
         source={require("../../../../res/image/bg.png")}
         style={styles.image}
       >
-        <Heading navigation="Home" />
+        <Heading navigation={navigation} />
+
         <SearchBarWithR navigation={navigation} />
         <Text style={styles.popularTitle}>Popular Restaurant</Text>
 

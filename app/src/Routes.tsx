@@ -6,6 +6,7 @@ import HomeStack from "./scenes/home/homeStack";
 import Filter from "./scenes/home/screen/Filter";
 import Profile from "./scenes/Profile";
 import Voucher from "./scenes/Voucher";
+import Notification from "./scenes/Notification";
 
 type ComponentType = React.FC<any>;
 
@@ -74,6 +75,11 @@ export const Screen:Screen[] = [
   {
     name: "Voucher",
     component: Voucher,
+    option: false
+  },
+  {
+    name: "Notification",
+    component: Notification,
     option: false
   },
 ]

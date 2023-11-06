@@ -19,7 +19,8 @@ const PopularMenu: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
         source={require("../../../../res/image/bg.png")}
         style={styles.image}
       >
-        <Heading navigation="Home" />
+        <Heading navigation={navigation} />
+
         <Text style={styles.popularTitle}>Popular Menu</Text>
         <ScrollView>
           <View style={styles.popularContainer}>
