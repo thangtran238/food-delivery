@@ -7,12 +7,12 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import SwipeUp from "../../../components/SwipeUp";
-import R from "../../../R";
+import SwipeUp from "../components/SwipeUp";
+import R from "../R";
 import FontAwesome5IconButton from "react-native-vector-icons/FontAwesome5";
-import Button from "../../../components/Button";
-import AppOption from "../../../components/AppOption";
-import AppItem from "../../../components/AppItem";
+import Button from "../components/Button";
+import AppOption from "../components/AppOption";
+import AppItem from "../components/AppItem";
 import { NavigationProp } from "@react-navigation/native";
 
 type Props = {
@@ -47,7 +47,7 @@ const Component = (props: Props) => {
       </View>
       <TouchableOpacity onPress={() => props.navigation.navigate("Voucher")}>
         <AppOption
-          image={require("../../../../res/image/voucher.png")}
+          image={require("../../res/image/voucher.png")}
           type="normal"
           text="You Have 3 Vouchers"
         />
@@ -95,7 +95,7 @@ const Profile:React.FC<{navigation: Navigator}> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../../../../res/image/profile.png")}
+        source={require("../../res/image/profile.png")}
         style={styles.image}
       />
       <SwipeUp component={<Component navigation={navigation} />} />
@@ -106,10 +106,12 @@ const Profile:React.FC<{navigation: Navigator}> = ({navigation}) => {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: R.dimensions.width,
+    height: R.dimensions.height
   },
   image: {
-    width: "100%",
+    width: R.dimensions.width,
+    height: R.dimensions.height / 2.4,
     objectFit: "fill",
   },
   info: {

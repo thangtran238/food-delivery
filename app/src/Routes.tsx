@@ -1,59 +1,79 @@
-
 import Chat from "./scenes/Chat";
 import Cart from "./scenes/Cart";
 import IconCom, { Icons as IconTypes } from "./components/Icon";
 import colors from "../res/colors";
 import HomeStack from "./scenes/home/homeStack";
-import ProfileStack from "./scenes/profile/profileStack";
-import Profile from "./scenes/profile/screen/Profile";
+import Filter from "./scenes/home/screen/Filter";
+import Profile from "./scenes/Profile";
+import Voucher from "./scenes/Voucher";
 
 type ComponentType = React.FC<any>;
 
 interface Path {
-  route: string
-  label: string
-  iconType: any
-  icon: string
-  component: ComponentType
-  color: string
-  alphaClr: string 
+  route: string;
+  label: string;
+  iconType: any;
+  icon: string;
+  component: ComponentType;
+  color: string;
+  alphaClr: string;
+  display?: string;
+}
+interface Screen {
+  name: string;
+  component: ComponentType;
+  option: boolean;
 }
 //define routes here for react-navigation
-export const Routes: Path[] = [
+export const Nav: Path[] = [
   {
-    route: 'Home',
-    label: 'Home',
+    route: "Home",
+    label: "Home",
     iconType: IconTypes.Feather,
-    icon: 'home',
+    icon: "home",
     component: HomeStack,
     color: colors.secondary,
     alphaClr: colors.secondary,
   },
   {
-    route: 'Profile',
-    label: 'Profile',
+    route: "Profile",
+    label: "Profile",
     iconType: IconTypes.Feather,
-    icon: 'user',
-    component: ProfileStack,
+    icon: "user",
+    component: Profile,
     color: colors.secondary,
     alphaClr: colors.secondary,
+    display: 'none'
   },
   {
-    route: 'Cart',
-    label: 'Cart',
+    route: "Cart",
+    label: "Cart",
     iconType: IconTypes.Feather,
-    icon: 'shopping-cart',
+    icon: "shopping-cart",
     component: Cart,
     color: colors.secondary,
     alphaClr: colors.secondary,
   },
   {
-    route: 'Chat',
-    label: 'Chat',
+    route: "Chat",
+    label: "Chat",
     iconType: IconTypes.Feather,
-    icon: 'message-circle',
+    icon: "message-circle",
     component: Chat,
     color: colors.secondary,
     alphaClr: colors.secondary,
   },
 ];
+
+export const Screen:Screen[] = [
+  {
+    name: "Filter",
+    component: Filter,
+    option: false
+  },
+  {
+    name: "Voucher",
+    component: Voucher,
+    option: false
+  },
+]

@@ -54,7 +54,7 @@ const AppOption = (props: Props) => {
   }
   return (
     <View style={styles.container}>
-      <View style={optionStyle}>
+      <View style={[optionStyle, styles.wrapper]}>
         <ImageBackground source={imageSource} style={styles.image} />
         <Text style={styles.font}>{props.text}</Text>
       </View>
@@ -70,12 +70,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 12,
-    shadowColor: "#a8bed2",
-    shadowOpacity: 1,
-    shadowRadius: 6,
+  },
+  wrapper: {
+    shadowColor: "#ccc",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
     shadowOffset: {
-      width: 2,
-      height: 2,
+      width: 1,
+      height: 1,
     },
     marginVertical: 40,
   },

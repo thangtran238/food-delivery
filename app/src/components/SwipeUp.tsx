@@ -88,7 +88,7 @@ const SwipeUp: React.FC<SwipeUpProps> = ({ component }) => {
 const styles = StyleSheet.create({
   bottomSheet: {
     position: "absolute",
-    width: "100%",
+    width: R.dimensions.width,
     height: BOTTOM_SHEET_MAX_HEIGHT,
     bottom: BOTTOM_SHEET_MIN_HEIGHT - BOTTOM_SHEET_MAX_HEIGHT,
     ...Platform.select({
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
+    paddingBottom: R.dimensions.height / 5
   },
   draggableArea: {
     width: 132,

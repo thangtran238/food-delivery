@@ -8,7 +8,7 @@ import {
   ImageBackground,
   ScrollView,
   Image,
-  TextInput
+  TextInput,
 } from "react-native";
 import Heading from "../../../components/Heading";
 import R from "../../../R";
@@ -69,126 +69,95 @@ const Filter: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
             placeholder="What do you want to order"
           />
         </View>
-        <ScrollView>
-          {searchResults.length === 0 && (
-            <>
-              <Text style={styles.typeText}>Type</Text>
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    setSelectedType("restaurant");
-                  }}
-                >
-                  <Text style={styles.buttonText}>Restaurant</Text>
-                </TouchableOpacity>
+        <View style={styles.wrapper}>
+          <ScrollView>
+            {searchResults.length === 0 && (
+              <>
+                <Text style={styles.typeText}>Type</Text>
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      setSelectedType("restaurant");
+                    }}
+                  >
+                    <Text style={styles.buttonText}>Restaurant</Text>
+                  </TouchableOpacity>
 
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    setSelectedType("menu");
-                  }}
-                >
-                  <Text style={styles.buttonText}>Menu</Text>
-                </TouchableOpacity>
-              </View>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      setSelectedType("menu");
+                    }}
+                  >
+                    <Text style={styles.buttonText}>Menu</Text>
+                  </TouchableOpacity>
+                </View>
 
-              <Text style={styles.typeText}>Location</Text>
+                <Text style={styles.typeText}>Location</Text>
 
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    setSelectedLocation("1km");
-                  }}
-                >
-                  <Text style={styles.buttonText}>1km</Text>
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      setSelectedLocation("1km");
+                    }}
+                  >
+                    <Text style={styles.buttonText}>1km</Text>
+                  </TouchableOpacity>
 
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    setSelectedLocation("<10km");
-                  }}
-                >
-                  <Text style={styles.buttonText}>{"<10km"}</Text>
-                </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      setSelectedLocation("<10km");
+                    }}
+                  >
+                    <Text style={styles.buttonText}>{"<10km"}</Text>
+                  </TouchableOpacity>
 
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    setSelectedLocation(">10km");
-                  }}
-                >
-                  <Text style={styles.buttonText}>{">10km"}</Text>
-                </TouchableOpacity>
-              </View>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      setSelectedLocation(">10km");
+                    }}
+                  >
+                    <Text style={styles.buttonText}>{">10km"}</Text>
+                  </TouchableOpacity>
+                </View>
 
-              <Text style={styles.typeText}>Food</Text>
+                <Text style={styles.typeText}>Food</Text>
 
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    setSelectedFood("Cake");
-                  }}
-                >
-                  <Text style={styles.buttonText}>Cake</Text>
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      setSelectedFood("Cake");
+                    }}
+                  >
+                    <Text style={styles.buttonText}>Cake</Text>
+                  </TouchableOpacity>
 
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    setSelectedFood("Soup");
-                  }}
-                >
-                  <Text style={styles.buttonText}>Soup</Text>
-                </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      setSelectedFood("Soup");
+                    }}
+                  >
+                    <Text style={styles.buttonText}>Soup</Text>
+                  </TouchableOpacity>
 
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => {
-                    setSelectedFood("Main course");
-                  }}
-                >
-                  <Text style={styles.buttonText}>Main course</Text>
-                </TouchableOpacity>
-              </View>
-            </>
-          )}
-
-          {/* <View>
-           
-        {searchResults?.map((result, index) => (
-            <Text  key={index}>{result.name}</Text>
-        ))}
-        </View> */}
-          {/* <View style={styles.restaurantContainer}>
-            {searchResults.map((item, index) => {
-              if (item.type === "restaurant") {
-                return (
-                  <View style={styles.restaurantBox} key={item.id}>
-                    <Image source={item.image} style={styles.restaurantLogo} />
-                    <Text style={styles.restaurantName}>{item.name}</Text>
-                    <Text style={styles.minutesText}>{item.minutes}</Text>
-                  </View>
-                );
-              } else if (item.type === "menu") {
-                return (
-                  <View style={styles.foodItem} key={item.id}>
-                    <Image source={item.image} style={styles.foodImage} />
-                    <View style={styles.foodInfo}>
-                      <Text style={styles.foodName}>{item.name}</Text>
-                      <Text style={styles.foodtitle}>{item.title}</Text>
-                    </View>
-                    <View>
-                      <Text style={styles.foodPrice}>{item.price}</Text>
-                    </View>
-                  </View>
-                );
-              }
-            })}
-          </View>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                      setSelectedFood("Main course");
+                    }}
+                  >
+                    <Text style={styles.buttonText}>Main course</Text>
+                  </TouchableOpacity>
+                </View>
+              </>
+            )}
+          </ScrollView>
           <View style={styles.searchButtonContainer}>
             <TouchableOpacity
               style={styles.searchButton}
@@ -196,14 +165,22 @@ const Filter: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
             >
               <Text style={styles.searchButtonText}>Search</Text>
             </TouchableOpacity>
-          </View> */}
-        </ScrollView>
+          </View>
+        </View>
       </ImageBackground>
     </View>
   );
 };
 // define your styles
 const styles = StyleSheet.create({
+  container: {
+    width: R.dimensions.width,
+    height: R.dimensions.height,
+  },
+  wrapper: {
+    height: R.dimensions.height * 2 / 2.8,
+  },
+
   searchBar: {
     marginHorizontal: 14,
     backgroundColor: R.colors.purple,
@@ -277,7 +254,7 @@ const styles = StyleSheet.create({
   },
   searchButtonContainer: {
     alignItems: "center",
-    marginTop: 90,
+    bottom: 12,
   },
   searchButton: {
     backgroundColor: "#8470FF",

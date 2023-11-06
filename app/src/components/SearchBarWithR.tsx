@@ -14,7 +14,6 @@ const SearchBarWithR: React.FC<{ navigation: Navigator }> = ({
           name={"search"}
           size={28}
           color={R.colors.secondary}
-          style={styles.icon}
         />
         <TextInput
           style={styles.input}
@@ -37,37 +36,47 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
+    width: R.dimensions.width,
     justifyContent: "space-between",
     paddingHorizontal: 25,
+    marginVertical: 10,
   },
   searchBar: {
-    marginRight: 12,
     backgroundColor: R.colors.purple,
     height: 60,
     borderRadius: 15,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 24,
-    width: "85%",
+    flex: 0.85 ,
+    columnGap: 10,
+    shadowColor: "#ccc",
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
   },
   input: {
     fontSize: R.strings.h3,
     color: R.colors.secondary,
   },
-  icon: {
-    marginRight: 12,
-  },
-  sub_icon: {
+  wrapper: {
     padding: 20,
     height: 60,
-    width: "15%",
-    borderRadius: 15,
-    marginRight: 30,
+    flex: 0.1,
     backgroundColor: R.colors.purple,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#ccc",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
   },
-  wrapper: {
-    borderRadius: 15
-  }
 });
 
 export default SearchBarWithR;

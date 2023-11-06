@@ -17,7 +17,7 @@ const Heading = (props: Props) => {
     return (
       <View >
         <View style={styles.container}>
-          <Text style={styles.text}>Find Your Favorite Food</Text>
+          <Text style={styles.text}>Find Your {"\n"}Favorite Food</Text>
           <Icon style={styles.icon} name={"notifications-outline"} size={22} color={R.colors.secondary} />
 
         </View>
@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     paddingBottom: 18,
   },
   text: {
-    width: "50%",
     fontWeight: R.fonts.bold,
     fontSize: R.strings.h1,
 
@@ -58,6 +57,13 @@ const styles = StyleSheet.create({
     backgroundColor: R.colors.primary,
     borderRadius: 8,
     padding: 11,
+    shadowColor: "#ccc",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
   }
 });
 export default Heading;

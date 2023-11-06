@@ -72,12 +72,12 @@ const styles = StyleSheet.create({
     gap: 20,
     marginTop: 20,
     alignSelf: 'center',
-    shadowColor: "#a8bed2",
+    shadowColor: "#ccc",
     shadowOpacity: 1,
-    shadowRadius: 6,
+    shadowRadius: 4,
     shadowOffset: {
-      width: 2,
-      height: 2,
+      width: 1,
+      height: 1,
     },
   },
   food_name: {

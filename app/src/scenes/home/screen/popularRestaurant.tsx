@@ -10,9 +10,12 @@ import {
   StatusBar,
 } from "react-native";
 import Heading from "../../../components/Heading";
+import SearchBarWithR from "../../../components/SearchBarWithR";
 import Shop from "../../../components/Shop";
 // create a component
-const PopularRestaurant: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
+const PopularRestaurant: React.FC<{ navigation: Navigator }> = ({
+  navigation,
+}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -20,6 +23,7 @@ const PopularRestaurant: React.FC<{ navigation: Navigator }> = ({ navigation }) 
         style={styles.image}
       >
         <Heading navigation="Home" />
+        <SearchBarWithR navigation={navigation} />
         <Text style={styles.popularTitle}>Popular Restaurant</Text>
 
         <ScrollView contentContainerStyle={styles.restaurantContainer}>
@@ -47,14 +51,14 @@ const styles = StyleSheet.create({
   restaurantContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal: 20,
+    padding: 25,
+    gap: 25,
     marginTop: 10,
     flexWrap: "wrap",
   },
   restaurantBox: {
     backgroundColor: "white",
     borderRadius: 8,
-    padding: 10,
     alignItems: "center",
     width: "45%",
     marginBottom: 20,
@@ -67,19 +71,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 4,
     elevation: 4,
-  },
-  restaurantLogo: {
-    width: 70,
-    height: 70,
-    marginBottom: 10,
-  },
-  restaurantName: {
-    fontWeight: "bold",
-    fontSize: 16,
-    color: "#333",
-  },
-  minutesText: {
-    color: "#666",
   },
   popularTitle: {
     fontSize: 20,

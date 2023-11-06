@@ -48,14 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 12,
-    shadowColor: "#a8bed2",
-    shadowOpacity: 1,
-    shadowRadius: 6,
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    marginVertical: 25,
+
   },
   wrap: {
     width: 347,
@@ -66,6 +59,14 @@ const styles = StyleSheet.create({
     columnGap: 18,
     backgroundColor: R.colors.primaryDark,
     borderRadius: 22,
+    shadowColor: "#ccc",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    marginVertical: 25,
   },
   image: {
     width: 62,

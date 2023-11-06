@@ -3,14 +3,16 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useEffect, useRef } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import colors from "./app/res/colors";
-import { Routes } from "./app/src/Routes";
+import { Nav, Screen } from "./app/src/Routes";
 import * as Animatable from "react-native-animatable";
 import IconCom, { Icons } from "./app/src/components/Icon";
+import { createStackNavigator } from "@react-navigation/stack";
+import { GET_NAV } from "./app/src/util/constant";
+const Stack = createStackNavigator();
 
-const TabArr = Routes;
-
+const TabArr = Nav;
+const ScreenArr = Screen;
 const Tab = createBottomTabNavigator();
-
 const TabButton = ({
   item,
   onPress,
@@ -72,35 +74,54 @@ const TabButton = ({
     </TouchableOpacity>
   );
 };
+const TabNavigator = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          height: 80,
+          position: "absolute",
+          bottom: 5,
+          right: 10,
+          left: 10,
+          borderRadius: 26,
+        },
+      }}
+    >
+      {TabArr.map((item, index) => (
+        <Tab.Screen
+          key={index}
+          name={item.route}
+          component={item.component}
+          options={{
+            tabBarShowLabel: false,
+            tabBarHideOnKeyboard: true,
+            tabBarButton: (props) => <TabButton {...props} item={item} />,
+          }}
+        />
+      ))}
+    </Tab.Navigator>
+  );
+};
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarStyle: {
-            height: 80,
-            position: "absolute",
-            bottom: 16,
-            right: 16,
-            left: 16,
-            borderRadius: 26,
-          },
-        }}
-      >
-        {TabArr.map((item, index) => (
-          <Tab.Screen
-            key={index}
-            name={item.route}
-            component={item.component}
-            options={{
-              tabBarShowLabel: false,
-              tabBarButton: (props) => <TabButton {...props} item={item} />,
-            }}
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Tab"
+          component={TabNavigator}
+          options={{ headerShown: false }}
+        />
+        {ScreenArr.map((screen) => (
+          <Stack.Screen
+            name={screen.name}
+            component={screen.component}
+            options={{ headerShown: screen.option }}
           />
         ))}
-      </Tab.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from "./screen/Home";
 import PopularMenu from "./screen/popularMenu";
 import PopularRestaurant from "./screen/popularRestaurant";
-import Filter from "./screen/filter";
+import Filter from "./screen/Filter";
 
 
 const Stack = createStackNavigator();
@@ -29,13 +29,6 @@ const HomeStack = () => {
       <Stack.Screen
         name="PopularRestaurant"
         component={PopularRestaurant}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="Filter"
-        component={Filter}
         options={{
           headerShown: false,
         }}
