@@ -36,8 +36,8 @@ const Noti = (props: Props) => {
 const styles = StyleSheet.create({
   imageWrap: {
     flex: 0.22,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: "flex-start",
+    justifyContent: "flex-start"
   },
   image: {
     height: 50,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 16,
+    padding: 10,
     overflow: "hidden",
     backgroundColor: R.colors.white,
     shadowColor: "#ccc",

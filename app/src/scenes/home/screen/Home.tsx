@@ -39,15 +39,18 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
 
           <ScrollView horizontal>
             <View style={styles.shop_container}>
-              <Shop
-                source={{
-                  image_url: require("../../../../res/image/Restaurant1.png"),
-                }}
-                text={{
-                  title: "Vergan Store",
-                  time: "12 minutes",
-                }}
-              />
+              <TouchableOpacity onPress={() => navigation.navigate("Food")}>
+                <Shop
+                  source={{
+                    image_url: require("../../../../res/image/Restaurant1.png"),
+                  }}
+                  text={{
+                    title: "Vergan Store",
+                    time: "12 minutes",
+                  }}
+                />
+              </TouchableOpacity>
+
               <Shop
                 source={{
                   image_url: require("../../../../res/image/Restaurant2.png"),

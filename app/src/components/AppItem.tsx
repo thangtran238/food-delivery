@@ -1,12 +1,12 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image,ImageSourcePropType } from "react-native";
 import R from "../R";
 import Button from "./Button";
 
 type Props = {
   type?: "Buy Again" | "Process";
-  image: string;
+  image_url: string | ImageSourcePropType;
   title: string;
   restaurant: string;
   price: number;
@@ -16,7 +16,7 @@ const AppItem = (props: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrap}>
-        <Image source={{ uri: props.image }} style={styles.image} />
+        <Image source={props.image_url} style={styles.image} />
         <View>
           <Text style={styles.title}>{props.title}</Text>
           <Text style={styles.restaurant}>{props.restaurant}</Text>

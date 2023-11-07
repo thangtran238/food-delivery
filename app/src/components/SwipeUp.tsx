@@ -9,9 +9,9 @@ import React, { ReactNode, useRef } from "react";
 import R from "../R";
 
 const BOTTOM_SHEET_MAX_HEIGHT = R.dimensions.height;
-const BOTTOM_SHEET_MIN_HEIGHT = R.dimensions.height * 0.65;
+const BOTTOM_SHEET_MIN_HEIGHT = R.dimensions.height * 0.6;
 const MAX_UPWARD_TRANSLATE_Y =
-  BOTTOM_SHEET_MIN_HEIGHT - BOTTOM_SHEET_MAX_HEIGHT + 48;
+  BOTTOM_SHEET_MIN_HEIGHT - BOTTOM_SHEET_MAX_HEIGHT + 40;
 const MAX_DOWNWARD_TRANSLATE_Y = 0;
 const DRAG_THRESHOLD = 20;
 

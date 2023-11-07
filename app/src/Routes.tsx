@@ -7,6 +7,7 @@ import Filter from "./scenes/home/screen/Filter";
 import Profile from "./scenes/Profile";
 import Voucher from "./scenes/Voucher";
 import Notification from "./scenes/Notification";
+import Food from "./scenes/Food";
 
 type ComponentType = React.FC<any>;
 
@@ -44,7 +45,7 @@ export const Nav: Path[] = [
     component: Profile,
     color: colors.secondary,
     alphaClr: colors.secondary,
-    display: 'none'
+    display: "none",
   },
   {
     route: "Cart",
@@ -66,20 +67,25 @@ export const Nav: Path[] = [
   },
 ];
 
-export const Screen:Screen[] = [
+export const Screen: Screen[] = [
   {
     name: "Filter",
     component: Filter,
-    option: false
+    option: false,
   },
   {
     name: "Voucher",
     component: Voucher,
-    option: false
+    option: false,
   },
   {
     name: "Notification",
     component: Notification,
-    option: false
+    option: false,
   },
-]
+  {
+    name: "Food",
+    component: Food,
+    option: false,
+  },
+];

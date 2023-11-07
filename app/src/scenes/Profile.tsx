@@ -1,11 +1,11 @@
 import React from "react";
 import {
-  View,
-  ScrollView,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
+    View,
+    ScrollView,
+    Text,
+    StyleSheet,
+    Image,
+    TouchableOpacity,
 } from "react-native";
 import SwipeUp from "../components/SwipeUp";
 import R from "../R";
@@ -58,28 +58,28 @@ const Component = (props: Props) => {
         <View>
           <AppItem
             type="Buy Again"
-            image={"../../res/image/voucher.png"}
+            image_url={"../../res/image/voucher.png"}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
           />
           <AppItem
             type="Buy Again"
-            image={"../../res/image/voucher.png"}
+            image_url={"../../res/image/voucher.png"}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
           />
           <AppItem
             type="Buy Again"
-            image={"../../res/image/voucher.png"}
+            image_url={"../../res/image/voucher.png"}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
           />
           <AppItem
             type="Buy Again"
-            image={"../../res/image/voucher.png"}
+            image_url={"../../res/image/voucher.png"}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
@@ -111,8 +111,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width: R.dimensions.width,
-    height: R.dimensions.height / 2.4,
-    objectFit: "fill",
+    height: R.dimensions.height / 2.2,
+    objectFit: "cover",
   },
   info: {
     flexDirection: "row",

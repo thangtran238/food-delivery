@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { ImageBackground } from "react-native";
 import { TouchableOpacity } from "react-native";
+import { ScrollView } from "react-native";
 import { View, Text, StyleSheet } from "react-native";
 import Button from "../components/Button";
 import Noti from "../components/Noti";
@@ -21,10 +22,11 @@ const Notification: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
             style={styles.button}
             onPress={() => navigation.goBack()}
           >
-            <Button styleType="custom" text={{ text: "<" }} />
+            <Button styleType="custom" text={{ text: "<" }} style={styles.button}/>
           </TouchableOpacity>
-          <View>
-            <Text style={styles.font}>Notifications</Text>
+          <Text style={styles.font}>Notifications</Text>
+
+          <ScrollView style={styles.scale}>
             <View style={styles.subWrapper}>
               <Noti
                 image_url={require("../../res/image/icon1.png")}
@@ -42,7 +44,7 @@ const Notification: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
                 time={"22 July 2021"}
               />
             </View>
-          </View>
+          </ScrollView>
         </View>
       </ImageBackground>
     </View>
@@ -54,25 +56,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  scale: {
+    height: R.dimensions.height,
+    width: R.dimensions.width,
+  },
   image: {
     width: "100%",
     height: R.dimensions.height,
   },
-  wrapper: {
-    padding: 20,
-  },
   button: {
     alignItems: "flex-start",
+    marginTop: 24,
+    marginStart: 24,
   },
   font: {
     fontWeight: R.fonts.bold,
     fontSize: R.strings.h2,
     paddingHorizontal: 12,
     marginVertical: 20,
+    marginStart: 14
   },
 
   subWrapper: {
-    paddingVertical: "auto",
+    flexDirection: "column"
   },
 });
 
