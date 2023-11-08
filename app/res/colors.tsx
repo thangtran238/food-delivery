@@ -5,7 +5,7 @@ export default {
   substance: "#9FA6AA",
   fontColor: "#000",
   subFontColor: "#ccc",
-  purple: '#F1EFFF',
+  purple: '#b4a6ff',
 
   // primary: '#637aff',
   primaryDark: '#fcfffd',

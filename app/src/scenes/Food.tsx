@@ -12,6 +12,7 @@ import SwipeUp from "../components/SwipeUp";
 import { NavigationProp } from "@react-navigation/native";
 import R from "../R";
 import Icon from "react-native-vector-icons/Ionicons";
+import Comment from "../components/Comment";
 
 type Props = {
   navigation: NavigationProp;
@@ -19,7 +20,8 @@ type Props = {
 
 const Component = (props: Props) => {
   return (
-    <ScrollView>
+    <View style={styles.container}>
+      <ScrollView>
         <View style={styles.wrapper}>
           <View style={styles.status}>
             <Text style={styles.statusFont}>Popular</Text>
@@ -41,9 +43,60 @@ const Component = (props: Props) => {
         </View>
         <View style={styles.desc}>
           <Text style={styles.title}>Rainbow Sandwich Sugarless</Text>
+          <View style={styles.groupIcon}>
+            <View style={styles.groupIcon}>
+              <Icon
+                name={"location-outline"}
+                size={20}
+                color={R.colors.secondary}
+              />
+              <Text> 19 Km </Text>
+            </View>
+            <View style={styles.groupIcon}>
+              <Icon name={"star"} size={20} color={R.colors.green} />
+              <Text> 4,8 Rating </Text>
+            </View>
+          </View>
+          <View>
+            Nulla occaecat velit laborum exercitation ullamco. Elit labore eu
+            aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est
+            cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu
+            laborum. Strowberry Cream wheat Nulla occaecat velit laborum
+            exercitation ullamco. Elit labore eu aute elit nostrud culpa velit
+            excepteur deserunt sunt. {"\n"}- Strawberries{"\n"}- Cream{"\n"}-
+            Wheat{"\n"}
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+            explicabo culpa repellat, velit corrupti eos nulla consequuntur
+            dicta, iusto qui quasi. Corrupti, non ratione provident cupiditate
+            commodi assumenda fugiat iusto.
+          </View>
         </View>
-        <View style={styles.commentSession}></View>
-    </ScrollView>
+        <View style={styles.commentSession}>
+          <Text style={styles.commentFont}>Testimonials</Text>
+          <View style={styles.commentWrapper}>
+            <Comment
+              image_url={require("../../res/image/comment1.png")}
+              name="Dianne Russell"
+              time="12 April 2021"
+              rate={5}
+              comment="This is great. So delicious! You must here with your family"
+            />
+            <Comment
+              image_url={require("../../res/image/comment1.png")}
+              name="Dianne Russell"
+              time="12 April 2021"
+              rate={5}
+              comment="This is great. So delicious! You must here with your family"
+            />
+          </View>
+        </View>
+      </ScrollView>
+      <View style={styles.searchButtonContainer}>
+        <TouchableOpacity style={styles.searchButton}>
+          <Text style={styles.searchButtonText}>Search</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 
@@ -65,6 +118,7 @@ const styles = StyleSheet.create({
   container: {
     width: R.dimensions.width,
     height: R.dimensions.height,
+    position: "relative",
   },
   image: {
     width: R.dimensions.width,
@@ -76,7 +130,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 30,
-    paddingVertical: 24
+    paddingVertical: 24,
   },
   iconWrapper: {
     flexDirection: "row",
@@ -122,7 +176,42 @@ const styles = StyleSheet.create({
     fontSize: R.strings.h1,
     fontWeight: R.fonts.bold,
   },
-  commentSession: {},
+  groupIcon: {
+    flexDirection: "row",
+    marginVertical: 6,
+  },
+  commentFont: {
+    fontSize: R.strings.h2,
+    fontWeight: R.fonts.bold,
+    marginBottom: 24,
+  },
+  commentSession: {
+    paddingHorizontal: 34,
+    marginVertical: 24,
+  },
+  searchButtonContainer: {
+    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+    left: 40,
+    right: 40,
+    bottom: 40,
+  },
+  searchButton: {
+    backgroundColor: R.colors.secondary,
+    borderRadius: 20,
+    paddingHorizontal: 120,
+    paddingVertical: 17,
+  },
+  searchButtonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "white",
+    height: 20,
+  },
+  commentWrapper: {
+    rowGap: 40,
+  }
 });
 
 //make this component available to the app
