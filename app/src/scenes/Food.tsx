@@ -58,17 +58,19 @@ const Component = (props: Props) => {
             </View>
           </View>
           <View>
-            Nulla occaecat velit laborum exercitation ullamco. Elit labore eu
-            aute elit nostrud culpa velit excepteur deserunt sunt. Velit non est
-            cillum consequat cupidatat ex Lorem laboris labore aliqua ad duis eu
-            laborum. Strowberry Cream wheat Nulla occaecat velit laborum
-            exercitation ullamco. Elit labore eu aute elit nostrud culpa velit
-            excepteur deserunt sunt. {"\n"}- Strawberries{"\n"}- Cream{"\n"}-
-            Wheat{"\n"}
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
-            explicabo culpa repellat, velit corrupti eos nulla consequuntur
-            dicta, iusto qui quasi. Corrupti, non ratione provident cupiditate
-            commodi assumenda fugiat iusto.
+            <Text>
+              Nulla occaecat velit laborum exercitation ullamco. Elit labore eu
+              aute elit nostrud culpa velit excepteur deserunt sunt. Velit non
+              est cillum consequat cupidatat ex Lorem laboris labore aliqua ad
+              duis eu laborum. Strowberry Cream wheat Nulla occaecat velit
+              laborum exercitation ullamco. Elit labore eu aute elit nostrud
+              culpa velit excepteur deserunt sunt. {"\n"}- Strawberries{"\n"}-
+              Cream{"\n"}- Wheat{"\n"}
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
+              explicabo culpa repellat, velit corrupti eos nulla consequuntur
+              dicta, iusto qui quasi. Corrupti, non ratione provident cupiditate
+              commodi assumenda fugiat iusto.
+            </Text>
           </View>
         </View>
         <View style={styles.commentSession}>
@@ -93,7 +95,7 @@ const Component = (props: Props) => {
       </ScrollView>
       <View style={styles.searchButtonContainer}>
         <TouchableOpacity style={styles.searchButton}>
-          <Text style={styles.searchButtonText}>Search</Text>
+          <Text style={styles.searchButtonText}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -195,7 +197,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     left: 40,
     right: 40,
-    bottom: 40,
+    bottom: 80,
   },
   searchButton: {
     backgroundColor: R.colors.secondary,
@@ -211,7 +213,7 @@ const styles = StyleSheet.create({
   },
   commentWrapper: {
     rowGap: 40,
-  }
+  },
 });
 
 //make this component available to the app
