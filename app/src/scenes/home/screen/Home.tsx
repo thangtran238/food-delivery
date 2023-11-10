@@ -31,7 +31,7 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
           >
             <ViewMore
               text={{
-                title: "Nearest Restaurant",
+                title: "Popular Menu",
                 viewmore: "View More",
               }}
             />
@@ -39,14 +39,16 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
 
           <ScrollView horizontal>
             <View style={styles.shop_container}>
-              <TouchableOpacity onPress={() => navigation.navigate("Food")}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Restaurant")}
+              >
                 <Shop
                   source={{
                     image_url: require("../../../../res/image/Restaurant1.png"),
                   }}
                   text={{
                     title: "Vergan Store",
-                    time: "12 minutes",
+                    string: "12 minutes",
                   }}
                 />
               </TouchableOpacity>
@@ -57,7 +59,7 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
                 }}
                 text={{
                   title: "Smart Resto",
-                  time: "18 minutes",
+                  string: "18 minutes",
                 }}
               />
               <Shop
@@ -66,7 +68,7 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
                 }}
                 text={{
                   title: "Healthy Food",
-                  time: "8 minutes",
+                  string: "8 minutes",
                 }}
               />
               <Shop
@@ -75,7 +77,7 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
                 }}
                 text={{
                   title: "Vergan Food",
-                  time: "13 minutes",
+                  string: "13 minutes",
                 }}
               />
             </View>
@@ -88,15 +90,17 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
               }}
             />
           </TouchableOpacity>
-          <Item
-            styleType="primary"
-            source={{ image_url: require("../../../../res/image/food1.png") }}
-            text={{
-              food_name: "Herbal Pancake",
-              restaurant: "Wijie Resto",
-              price: 7,
-            }}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("Food")}>
+            <Item
+              styleType="primary"
+              source={{ image_url: require("../../../../res/image/food1.png") }}
+              text={{
+                food_name: "Herbal Pancake",
+                restaurant: "Wijie Resto",
+                price: 7,
+              }}
+            />
+          </TouchableOpacity>
           <Item
             styleType="primary"
             source={{ image_url: require("../../../../res/image/food2.png") }}

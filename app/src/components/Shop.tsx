@@ -8,7 +8,7 @@ type Props = {
     };
     text?: {
         title?: string;
-        time?: string;
+        string?: string;
     };
 };
 
@@ -20,13 +20,13 @@ const Shop = (props: Props) => {
 
     const text = {
         title: props.text?.title || '',
-        time: props.text?.time || '',
+        string: props.text?.string || '',
     };
     return (
         <View style={styles.container}>
             <Image source={imageSource} style={styles.image} />
             <Text style={styles.title}>{text.title}</Text>
-            <Text style={styles.time}>{text.time} mins</Text>
+            <Text style={styles.time}>{text.string}</Text>
         </View>
     );
 };
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     container: {
         width: 147,
         height: 184,
+        rowGap: 12,
         borderRadius: 22,
         backgroundColor: 'white',
         alignContent: 'center',

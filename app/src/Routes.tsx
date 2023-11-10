@@ -8,6 +8,7 @@ import Profile from "./scenes/Profile";
 import Voucher from "./scenes/Voucher";
 import Notification from "./scenes/Notification";
 import Food from "./scenes/Food";
+import Restaurant from "./scenes/Restaurant";
 
 type ComponentType = React.FC<any>;
 
@@ -88,4 +89,9 @@ export const Screen: Screen[] = [
     component: Food,
     option: false,
   },
+  {
+    name: "Restaurant",
+    component: Restaurant,
+    option: false
+  }
 ];
