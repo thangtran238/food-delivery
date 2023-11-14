@@ -19,7 +19,7 @@ import {auth, database} from '../../../config/firebase';
 import {AntDesign} from '@expo/vector-icons';
 
 
-export default function Chat() {
+export default function ChatBox() {
     const colors = {
         primary: '#f57c00',
         gray: '#C5C5C7',

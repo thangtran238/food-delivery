@@ -9,6 +9,10 @@ import Voucher from "./scenes/Voucher";
 import Notification from "./scenes/Notification";
 import Food from "./scenes/Food";
 import Restaurant from "./scenes/Restaurant";
+import Login from "./scenes/Login";
+import Signup from "./scenes/Signup";
+import ChatBox from "./scenes/ChatBox";
+import TabNavigator from "./TabNavigator";
 
 type ComponentType = React.FC<any>;
 
@@ -70,6 +74,11 @@ export const Nav: Path[] = [
 
 export const Screen: Screen[] = [
   {
+    name: "Chat Box",
+    component: ChatBox,
+    option: false,
+  },
+  {
     name: "Filter",
     component: Filter,
     option: false,
@@ -92,6 +101,19 @@ export const Screen: Screen[] = [
   {
     name: "Restaurant",
     component: Restaurant,
-    option: false
-  }
+    option: false,
+  },
 ];
+
+// export const Access: Screen[] = [
+//   {
+//     name: "Log In",
+//     component: Login,
+//     option: false,
+//   },
+//   {
+//     name: "Sign Up",
+//     component: Signup,
+//     option: false,
+//   },
+// ];
