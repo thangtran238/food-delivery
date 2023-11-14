@@ -22,7 +22,7 @@ const Notification: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
             style={styles.button}
             onPress={() => navigation.goBack()}
           >
-            <Button styleType="custom" text={{ text: "<" }} style={styles.button}/>
+            <Button styleType="custom" text={{ text: "<" }}/>
           </TouchableOpacity>
           <Text style={styles.font}>Notifications</Text>
 
