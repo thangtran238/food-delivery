@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 
-const GET_NAV = ():string => {
+const GET_NAV = ():any => {
   const navigation = useNavigation();
   return navigation.getState().routeNames[0];
 };

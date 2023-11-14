@@ -1,15 +1,28 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageSourcePropType,
+  ImageBackground,
+  Touchable,
+  TouchableOpacity,
+} from "react-native";
 import R from "../R";
 
 type Props = {
-  image: string;
+  image: string | ImageSourcePropType;
   type?: "normal" | "payment";
   text?: string;
 };
 // create a component
 const AppOption = (props: Props) => {
+  let imageSource = props.image || "";
+  if (typeof imageSource === "string") {
+    imageSource = { uri: imageSource };
+  }
+
   let optionStyle = {};
   switch (props.type) {
     case "normal":
@@ -21,8 +34,8 @@ const AppOption = (props: Props) => {
         width: 347,
         height: 64,
         backgroundColor: R.colors.primaryDark,
-        columnGap: 24,
-        fontWeight: R.fonts.normal
+        columnGap: 30,
+        fontWeight: R.fonts.normal,
       };
       break;
     case "payment":
@@ -36,14 +49,13 @@ const AppOption = (props: Props) => {
         height: 64,
         backgroundColor: R.colors.primaryDark,
         columnGap: 24,
-        fontWeight: R.fonts.bold
-
+        fontWeight: R.fonts.bold,
       };
   }
   return (
     <View style={styles.container}>
-      <View style={optionStyle}>
-        <Image source={{uri : props.image}} style={styles.image} />
+      <View style={[optionStyle, styles.wrapper]}>
+        <ImageBackground source={imageSource} style={styles.image} />
         <Text style={styles.font}>{props.text}</Text>
       </View>
     </View>
@@ -58,21 +70,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 12,
-    shadowColor: "#a8bed2",
-    shadowOpacity: 1,
-    shadowRadius: 6,
+  },
+  wrapper: {
+    shadowColor: "#ccc",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
     shadowOffset: {
-      width: 2,
-      height: 2,
+      width: 1,
+      height: 1,
     },
     marginVertical: 40,
   },
   image: {
-    width: 45,
-    height: 45,
+    width: 30,
+    height: 30,
   },
   font: {
-    fontSize: 15
+    fontSize: 15,
   },
 });
 

@@ -5,11 +5,11 @@ export default {
   substance: "#9FA6AA",
   fontColor: "#000",
   subFontColor: "#ccc",
-  purple: '#F1EFFF',
+  purple: '#b4a6ff',
 
   // primary: '#637aff',
   primaryDark: '#fcfffd',
-  primaryLite: '#637aff99',
+  primaryLite: '#D3ECFF',
   black: '#000',
   white: 'white',
   accent: '#112233',
@@ -27,7 +27,7 @@ export default {
   line: '#282C35',
   darkGray: '#999999',
 
-  darkOverlayColor: 'rgba(0, 0, 0, 0.4)',
+  darkOverlayColor: 'rgba(107, 80, 246, 1)',
   darkOverlayColor2: 'rgba(0, 0, 0, 0.8)',
   lightOverlayColor: 'rgba(254, 254, 250, 0.4)',
   primaryAlpha: 'rgba(99, 122, 255, 0.15)',

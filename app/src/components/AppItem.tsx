@@ -1,12 +1,12 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image,ImageSourcePropType } from "react-native";
 import R from "../R";
 import Button from "./Button";
 
 type Props = {
   type?: "Buy Again" | "Process";
-  image: string;
+  image_url: string | ImageSourcePropType;
   title: string;
   restaurant: string;
   price: number;
@@ -16,7 +16,7 @@ const AppItem = (props: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrap}>
-        <Image source={{ uri: props.image }} style={styles.image} />
+        <Image source={props.image_url} style={styles.image} />
         <View>
           <Text style={styles.title}>{props.title}</Text>
           <Text style={styles.restaurant}>{props.restaurant}</Text>
@@ -48,14 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 12,
-    shadowColor: "#a8bed2",
-    shadowOpacity: 1,
-    shadowRadius: 6,
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    marginVertical: 25,
+
   },
   wrap: {
     width: 347,
@@ -66,6 +59,14 @@ const styles = StyleSheet.create({
     columnGap: 18,
     backgroundColor: R.colors.primaryDark,
     borderRadius: 22,
+    shadowColor: "#ccc",
+    shadowOpacity: 0.7,
+    shadowRadius: 3,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    marginVertical: 25,
   },
   image: {
     width: 62,

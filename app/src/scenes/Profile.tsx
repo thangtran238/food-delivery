@@ -1,13 +1,25 @@
 import React from "react";
-import { View, ScrollView, Text, StyleSheet, ImageBackground } from "react-native";
+import {
+    View,
+    ScrollView,
+    Text,
+    StyleSheet,
+    Image,
+    TouchableOpacity,
+} from "react-native";
 import SwipeUp from "../components/SwipeUp";
 import R from "../R";
 import FontAwesome5IconButton from "react-native-vector-icons/FontAwesome5";
 import Button from "../components/Button";
 import AppOption from "../components/AppOption";
 import AppItem from "../components/AppItem";
+import { NavigationProp } from "@react-navigation/native";
 
-const Component = () => {
+type Props = {
+  navigation: NavigationProp;
+};
+
+const Component = (props: Props) => {
   return (
     <ScrollView>
       <Button
@@ -33,39 +45,41 @@ const Component = () => {
           color={R.colors.secondary}
         />
       </View>
-      <AppOption
-        image={"../../res/image/voucher.png"}
-        type="normal"
-        text="You Have 3 Vouchers"
-      />
+      <TouchableOpacity onPress={() => props.navigation.navigate("Voucher")}>
+        <AppOption
+          image={require("../../res/image/voucher.png")}
+          type="normal"
+          text="You Have 3 Vouchers"
+        />
+      </TouchableOpacity>
+
       <View style={styles.favorite}>
         <Text style={styles.font}>Favorite</Text>
         <View>
           <AppItem
             type="Buy Again"
-            image={"../../res/image/voucher.png"}
+            image_url={"../../res/image/voucher.png"}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
           />
           <AppItem
             type="Buy Again"
-            image={"../../res/image/voucher.png"}
+            image_url={"../../res/image/voucher.png"}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
           />
           <AppItem
             type="Buy Again"
-
-            image={"../../res/image/voucher.png"}
+            image_url={"../../res/image/voucher.png"}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
           />
           <AppItem
             type="Buy Again"
-            image={"../../res/image/voucher.png"}
+            image_url={"../../res/image/voucher.png"}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
@@ -73,15 +87,18 @@ const Component = () => {
         </View>
       </View>
     </ScrollView>
-  );
+  )
 };
 
 // create a component
-const Profile = () => {
+const Profile:React.FC<{navigation: Navigator}> = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={{ uri: `../../res/${R.images.profile}` }} />
-      <SwipeUp component={<Component />} />
+      <Image
+        source={require("../../res/image/profile.png")}
+        style={styles.image}
+      />
+      <SwipeUp component={<Component navigation={navigation} />} />
     </View>
   );
 };
@@ -89,7 +106,13 @@ const Profile = () => {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: R.dimensions.width,
+    height: R.dimensions.height
+  },
+  image: {
+    width: R.dimensions.width,
+    height: R.dimensions.height / 2.2,
+    objectFit: "cover",
   },
   info: {
     flexDirection: "row",

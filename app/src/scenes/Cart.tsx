@@ -10,12 +10,6 @@ type Props = {}
 
 const Cart = (props: Props) => {
 
-  const [totalQuantity, setTotalQuantity] = useState(0); 
-
-  const handleQuantityChange = () => {
-    // setTotalQuantity(totalQuantity + quantityChange);
-  };
-
   return ( 
     <View style={styles.container}>
       <View style={styles.back}>
