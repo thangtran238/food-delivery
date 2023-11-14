@@ -13,7 +13,6 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../config/firebase";
 import compose = StyleSheet.compose;
-import AsyncStorage from "@react-native-async-storage/async-storage";
 type Props = {};
 
 const Login: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
@@ -25,8 +24,6 @@ const Login: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
       signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           console.log("login success");
-          const jsonValue = JSON.stringify(email);
-          AsyncStorage.setItem('user', jsonValue)
           navigation.navigate("NavBar");
         })
         .catch((err) => Alert.alert("login error", err.message));

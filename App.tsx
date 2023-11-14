@@ -2,7 +2,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import { Screen } from "./app/src/Routes";
+import { Screen, Access } from "./app/src/Routes";
 import { createStackNavigator } from "@react-navigation/stack";
 import TabNavigator from "./app/src/TabNavigator";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -15,21 +15,21 @@ import Login from "./app/src/scenes/Login";
 import Signup from "./app/src/scenes/Signup";
 
 const ScreenArr = Screen;
-// const AccessArr = Access;
+const AccessArr = Access;
 export default function App() {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const jsonValue = await AsyncStorage.getItem("user");
-        return jsonValue != null ? setUser(JSON.parse(jsonValue)) : null;
-      } catch (e) {
-        // error reading value
-      }
-    };
-
-    getData();
+    const unsubscribe = onAuthStateChanged(auth, (authenticatedUser) => {
+        if (authenticatedUser) {
+          // User is signed in
+          setUser(authenticatedUser);
+        } else {
+          // No user is signed in
+          setUser(null);
+        }
+      });
+      return () => unsubscribe();
   }, [user]);
   console.log(user);
 
@@ -38,16 +38,13 @@ export default function App() {
       {!user ? (
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen
-              name={"Log In"}
-              component={Login}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name={"Sign Up"}
-              component={Signup}
-              options={{ headerShown: false }}
-            />
+          {AccessArr.map((screen) => (
+              <Stack.Screen
+                name={screen.name}
+                component={screen.component}
+                options={{ headerShown: screen.option }}
+              />
+            ))}
           </Stack.Navigator>
         </NavigationContainer>
       ) : (

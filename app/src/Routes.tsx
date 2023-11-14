@@ -105,15 +105,15 @@ export const Screen: Screen[] = [
   },
 ];
 
-// export const Access: Screen[] = [
-//   {
-//     name: "Log In",
-//     component: Login,
-//     option: false,
-//   },
-//   {
-//     name: "Sign Up",
-//     component: Signup,
-//     option: false,
-//   },
-// ];
+export const Access: Screen[] = [
+  {
+    name: "Log In",
+    component: Login,
+    option: false,
+  },
+  {
+    name: "Sign Up",
+    component: Signup,
+    option: false,
+  },
+];
