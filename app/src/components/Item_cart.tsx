@@ -1,3 +1,5 @@
+
+import React from 'react';
 import { StyleSheet, Text, View, ImageSourcePropType, Image, TouchableOpacity } from 'react-native'
 import { useEffect, useState } from 'react'
 import R from '../R';
