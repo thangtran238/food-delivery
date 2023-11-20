@@ -13,6 +13,10 @@ import Login from "./scenes/Login";
 import Signup from "./scenes/Signup";
 import ChatBox from "./scenes/ChatBox";
 import TabNavigator from "./TabNavigator";
+import OrderDetail from "./scenes/Order";
+import Payment from "./scenes/Payment";
+import Shipping from "./scenes/Shipping";
+import Destination from "./scenes/Destination";
 
 type ComponentType = React.FC<any>;
 
@@ -50,7 +54,6 @@ export const Nav: Path[] = [
     component: Profile,
     color: colors.secondary,
     alphaClr: colors.secondary,
-    display: "none",
   },
   {
     route: "Cart",
@@ -60,6 +63,7 @@ export const Nav: Path[] = [
     component: Cart,
     color: colors.secondary,
     alphaClr: colors.secondary,
+    display: "none"
   },
   {
     route: "Chat",
@@ -103,6 +107,26 @@ export const Screen: Screen[] = [
     component: Restaurant,
     option: false,
   },
+  {
+    name: "Order Detail",
+    component: OrderDetail,
+    option: false,
+  },
+  {
+    name: "Payment",
+    component: Payment,
+    option: false,
+  },
+  {
+    name: "Shipping",
+    component: Shipping,
+    option: false,
+  },
+  // {
+  //   name: "Location",
+  //   component: Destination,
+  //   option: false
+  // }
 ];
 
 export const Access: Screen[] = [

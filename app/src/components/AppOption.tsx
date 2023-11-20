@@ -24,6 +24,7 @@ const AppOption = (props: Props) => {
   }
 
   let optionStyle = {};
+  let imageStyle = {};
   switch (props.type) {
     case "normal":
       optionStyle = {
@@ -37,6 +38,10 @@ const AppOption = (props: Props) => {
         columnGap: 30,
         fontWeight: R.fonts.normal,
       };
+      imageStyle = {
+        width: 30,
+        height: 30,
+      }
       break;
     case "payment":
       optionStyle = {
@@ -51,11 +56,16 @@ const AppOption = (props: Props) => {
         columnGap: 24,
         fontWeight: R.fonts.bold,
       };
+      imageStyle = {
+        width: 85,
+        height: 22,
+        objectFit: "cover"
+      }
   }
   return (
     <View style={styles.container}>
       <View style={[optionStyle, styles.wrapper]}>
-        <ImageBackground source={imageSource} style={styles.image} />
+        <ImageBackground source={imageSource} style={imageStyle} />
         <Text style={styles.font}>{props.text}</Text>
       </View>
     </View>
@@ -81,12 +91,10 @@ const styles = StyleSheet.create({
     },
     marginVertical: 40,
   },
-  image: {
-    width: 30,
-    height: 30,
-  },
+
   font: {
     fontSize: 15,
+    fontWeight: R.fonts.bold
   },
 });
 

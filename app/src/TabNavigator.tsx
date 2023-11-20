@@ -74,17 +74,7 @@ const TabButton = ({
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          height: 80,
-          position: "absolute",
-          bottom: 5,
-          right: 10,
-          left: 10,
-          borderRadius: 26,
-        },
-      }}
+      
     >
       {TabArr.map((item, index) => (
         <Tab.Screen
@@ -92,10 +82,21 @@ const TabNavigator = () => {
           name={item.route}
           component={item.component}
           options={{
+            headerShown: false,
+            tabBarStyle: {
+              display: item.display,
+              height: 80,
+              position: "absolute",
+              bottom: 5,
+              right: 10,
+              left: 10,
+              borderRadius: 26,
+            },
             tabBarShowLabel: false,
             tabBarHideOnKeyboard: true,
             tabBarButton: (props) => <TabButton {...props} item={item} />,
           }}
+
         />
       ))}
     </Tab.Navigator>

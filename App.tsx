@@ -5,14 +5,11 @@ import { StyleSheet } from "react-native";
 import { Screen, Access } from "./app/src/Routes";
 import { createStackNavigator } from "@react-navigation/stack";
 import TabNavigator from "./app/src/TabNavigator";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 const Stack = createStackNavigator();
 
 //quan
 import firebase from "firebase/compat";
 import { auth } from "./config/firebase";
-import Login from "./app/src/scenes/Login";
-import Signup from "./app/src/scenes/Signup";
 
 const ScreenArr = Screen;
 const AccessArr = Access;

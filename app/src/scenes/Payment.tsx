@@ -6,12 +6,11 @@ import { ScrollView } from "react-native";
 import { View, Text, StyleSheet } from "react-native";
 import AppOption from "../components/AppOption";
 import Button from "../components/Button";
-import OrderCom from "../components/OrderCom";
 
 import R from "../R";
 
 // create a component
-const Shipping: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
+const Payment: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -29,18 +28,10 @@ const Shipping: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
 
           <ScrollView style={styles.scale}>
             <View style={styles.subWrapper}>
-              <OrderCom
-                category="shipping"
-                image_url={require("../../res/image/detail1.png")}
-                type={"Order Location"}
-                text={"8502 Preston Rd. Inglewood, Maine 98380"}
-              />
-              <OrderCom
-                category="location"
-                image_url={require("../../res/image/detail1.png")}
-                type={"Order Location"}
-                text={"8502 Preston Rd. Inglewood, Maine 98380"}
-                onPress={() => navigation.navigate("Location")}
+              <AppOption
+                type="payment"
+                image={require("../../res/image/paypal.png")}
+                text={"2121 6352 8465 ****"}
               />
             </View>
           </ScrollView>
@@ -82,4 +73,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default Shipping;
+export default Payment;
