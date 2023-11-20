@@ -1,22 +1,27 @@
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  Touchable,
+  TouchableOpacity,
+} from "react-native";
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
-import {useState} from 'react'
-import Button from '../components/Button'
-import R from '../R'
-import Item_cart from '../components/Item_cart'
+import { useState } from "react";
+import Button from "../components/Button";
+import R from "../R";
+import Item_cart from "../components/Item_cart";
 
-type Props = {}
+type Props = {};
 
-
-
-const Cart = (props: Props) => {
-
-  return ( 
+const Cart: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
+  return (
     <View style={styles.container}>
       <View style={styles.back}>
-        <Button
-          styleType="custom"
-          text={{ text: "<" }} />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Button styleType="custom" text={{ text: "<" }} />
+        </TouchableOpacity>
       </View>
 
       <Text style={styles.text}>Order details</Text>
@@ -24,16 +29,16 @@ const Cart = (props: Props) => {
       <ScrollView>
         <Item_cart
           styleType="secondary"
-          source={{ image_url: require('../../res/image/food1.png') }}
+          source={{ image_url: require("../../res/image/food1.png") }}
           text={{
-            food_name: 'Herbal Pancake',
-            restaurant: 'Wijie Resto',
+            food_name: "Herbal Pancake",
+            restaurant: "Wijie Resto",
             price: 7,
           }}
         />
       </ScrollView>
 
-
+      {/* </View> */}
 
       <View style={styles.total}>
         <View style={styles.container_total_text}>
@@ -50,18 +55,22 @@ const Cart = (props: Props) => {
             <Text style={styles.total_highlight}>10$</Text>
           </View>
         </View>
-        <Button styleType='long_white' text={{ text: "Place My Order" }}></Button>
+        <TouchableOpacity onPress={() => navigation.navigate("Order Detail")}>
+          <Button
+            styleType="long_white"
+            text={{ text: "Place My Order" }}
+          ></Button>
+        </TouchableOpacity>
+
         <View style={styles.space}></View>
       </View>
-
     </View>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
 
 const styles = StyleSheet.create({
-
   text: {
     width: "50%",
     fontWeight: R.fonts.bold,
@@ -73,55 +82,51 @@ const styles = StyleSheet.create({
     marginTop: 38,
   },
   back: {
-    marginRight: 'auto',
+    marginRight: "auto",
   },
-
-
-
 
   total: {
     backgroundColor: R.colors.secondary,
-    width: 'auto',
-    height: 'auto',
+    width: "auto",
+    height: "auto",
     borderRadius: 22,
-    justifyContent: 'flex-end',
-    marginBottom: 125,
+    justifyContent: "flex-end",
+    marginBottom: 15,
     marginRight: 25,
   },
   container_total_text: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     paddingHorizontal: 25,
-
   },
   left_total_text: {
-    width: 'auto',
+    width: "auto",
     height: "auto",
     borderRadius: 22,
-    color: 'white',
+    color: "white",
   },
   right_total_text: {
-    width: 'auto',
+    width: "auto",
     height: "auto",
     borderRadius: 22,
-    color: 'white',
+    color: "white",
   },
   first_line: {
-    color: 'white',
+    color: "white",
     marginTop: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   whiteText: {
-    color: 'white',
+    color: "white",
     marginBottom: 2,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   total_highlight: {
-    color: 'white',
+    color: "white",
     marginTop: 10,
     marginBottom: 10,
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   space: {
     height: 15,

@@ -9,6 +9,14 @@ import Voucher from "./scenes/Voucher";
 import Notification from "./scenes/Notification";
 import Food from "./scenes/Food";
 import Restaurant from "./scenes/Restaurant";
+import Login from "./scenes/Login";
+import Signup from "./scenes/Signup";
+import ChatBox from "./scenes/ChatBox";
+import TabNavigator from "./TabNavigator";
+import OrderDetail from "./scenes/Order";
+import Payment from "./scenes/Payment";
+import Shipping from "./scenes/Shipping";
+import Destination from "./scenes/Destination";
 
 type ComponentType = React.FC<any>;
 
@@ -46,7 +54,6 @@ export const Nav: Path[] = [
     component: Profile,
     color: colors.secondary,
     alphaClr: colors.secondary,
-    display: "none",
   },
   {
     route: "Cart",
@@ -56,6 +63,7 @@ export const Nav: Path[] = [
     component: Cart,
     color: colors.secondary,
     alphaClr: colors.secondary,
+    display: "none"
   },
   {
     route: "Chat",
@@ -69,6 +77,11 @@ export const Nav: Path[] = [
 ];
 
 export const Screen: Screen[] = [
+  {
+    name: "Chat Box",
+    component: ChatBox,
+    option: false,
+  },
   {
     name: "Filter",
     component: Filter,
@@ -92,6 +105,39 @@ export const Screen: Screen[] = [
   {
     name: "Restaurant",
     component: Restaurant,
-    option: false
-  }
+    option: false,
+  },
+  {
+    name: "Order Detail",
+    component: OrderDetail,
+    option: false,
+  },
+  {
+    name: "Payment",
+    component: Payment,
+    option: false,
+  },
+  {
+    name: "Shipping",
+    component: Shipping,
+    option: false,
+  },
+  // {
+  //   name: "Location",
+  //   component: Destination,
+  //   option: false
+  // }
+];
+
+export const Access: Screen[] = [
+  {
+    name: "Log In",
+    component: Login,
+    option: false,
+  },
+  {
+    name: "Sign Up",
+    component: Signup,
+    option: false,
+  },
 ];

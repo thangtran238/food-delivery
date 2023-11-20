@@ -1,11 +1,11 @@
 import React from "react";
 import {
-    View,
-    ScrollView,
-    Text,
-    StyleSheet,
-    Image,
-    TouchableOpacity,
+  View,
+  ScrollView,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
 } from "react-native";
 import SwipeUp from "../components/SwipeUp";
 import R from "../R";
@@ -14,12 +14,24 @@ import Button from "../components/Button";
 import AppOption from "../components/AppOption";
 import AppItem from "../components/AppItem";
 import { NavigationProp } from "@react-navigation/native";
-
+import { signOut } from "firebase/auth";
+import { auth } from "../../../config/firebase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 type Props = {
   navigation: NavigationProp;
 };
 
-const Component = (props: Props) => {
+const Component: React.FC<Props> = ({ navigation }) => {
+  const onSignOut = async () => {
+    try {
+      await signOut(auth);
+      // Remove user data from AsyncStorage
+      await AsyncStorage.removeItem("user");
+      navigation.navigate("Log In");
+    } catch (error) {
+      console.error("Error logging out: ", error);
+    }
+  };
   return (
     <ScrollView>
       <Button
@@ -39,19 +51,21 @@ const Component = (props: Props) => {
           <Text style={styles.name}>Arash Ranjibaran</Text>
           <Text style={styles.email}>awdesign.ar@gmail.com</Text>
         </View>
-        <FontAwesome5IconButton
-          name="edit"
-          size={30}
-          color={R.colors.secondary}
-        />
+        <View style={styles.iconGroup}>
+          <FontAwesome5IconButton
+            name="edit"
+            size={21}
+            color={R.colors.secondary}
+          />
+          <TouchableOpacity onPress={() => onSignOut()}>
+            <FontAwesome5IconButton
+              name="dragon"
+              size={21}
+              color={R.colors.secondary}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
-      <TouchableOpacity onPress={() => props.navigation.navigate("Voucher")}>
-        <AppOption
-          image={require("../../res/image/voucher.png")}
-          type="normal"
-          text="You Have 3 Vouchers"
-        />
-      </TouchableOpacity>
 
       <View style={styles.favorite}>
         <Text style={styles.font}>Favorite</Text>
@@ -87,11 +101,11 @@ const Component = (props: Props) => {
         </View>
       </View>
     </ScrollView>
-  )
+  );
 };
 
 // create a component
-const Profile:React.FC<{navigation: Navigator}> = ({navigation}) => {
+const Profile: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
@@ -107,7 +121,7 @@ const Profile:React.FC<{navigation: Navigator}> = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     width: R.dimensions.width,
-    height: R.dimensions.height
+    height: R.dimensions.height,
   },
   image: {
     width: R.dimensions.width,
@@ -123,6 +137,11 @@ const styles = StyleSheet.create({
   email: { fontSize: 14, color: R.colors.substance },
   font: { fontSize: 15, fontWeight: R.fonts.bold },
   favorite: { paddingHorizontal: 12 },
+  iconGroup: {
+    flexDirection: "row",
+    columnGap: 12,
+    alignItems: "center",
+  },
 });
 
 // make this component available to the app
