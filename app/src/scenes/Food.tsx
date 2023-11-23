@@ -1,5 +1,5 @@
 //import liraries
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   ScrollView,
@@ -13,12 +13,26 @@ import { NavigationProp } from "@react-navigation/native";
 import R from "../R";
 import Icon from "react-native-vector-icons/Ionicons";
 import Comment from "../components/Comment";
+import { getData } from "../services/api";
 
 type Props = {
   navigation: NavigationProp;
+  id: number;
 };
 
 const Component = (props: Props) => {
+  const [item, setItem] = useState<Menu>()
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const itemData = await getData(`menu/${props.id}`)
+        setItem(itemData)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchData();
+  }, [props.id])
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -42,7 +56,7 @@ const Component = (props: Props) => {
           </View>
         </View>
         <View style={styles.desc}>
-          <Text style={styles.title}>Rainbow Sandwich Sugarless</Text>
+          <Text style={styles.title}>{item?.food_name}</Text>
           <View style={styles.groupIcon}>
             <View style={styles.groupIcon}>
               <Icon
@@ -103,14 +117,37 @@ const Component = (props: Props) => {
 };
 
 // create a component
-const Food: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
+const Food: React.FC<{
+  navigation: Navigator;
+  route: { params: { id: number } };
+}> = ({ navigation, route }) => {
+  const id = route.params.id;
+  const [menu, setMenu] = useState<Menu>();
+  console.log(id);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const menuData = await getData(`menu/${id}`);
+        setMenu(menuData);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [id]);
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../../res/image/item1.png")}
-        style={styles.image}
-      />
-      <SwipeUp component={<Component navigation={navigation} />} />
+      {menu ? (
+        <>
+          <Image
+            source={require(`../../res/image/${menu?.picture}`)}
+            style={styles.image}
+          />
+          <SwipeUp component={<Component navigation={navigation} id={id} />} />
+        </>
+      ) : (
+        <Text>Loading...</Text>
+      )}
     </View>
   );
 };

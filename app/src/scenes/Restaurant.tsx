@@ -1,5 +1,6 @@
 //import liraries
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import {
   View,
   ScrollView,
@@ -15,12 +16,41 @@ import Icon from "react-native-vector-icons/Ionicons";
 import Comment from "../components/Comment";
 import Shop from "../components/Shop";
 import ViewMore from "../components/ViewMore";
+import { getData } from "../services/api";
 
 type Props = {
   navigation: NavigationProp;
+  id: number;
 };
 
 const Component = (props: Props) => {
+  const [restaurant, setRestaurant] = useState<Restaurant>();
+  const [menus, setMenu] = useState<Menu[]>([]);
+  const [restaurantMenus, setRestaurantMenu] = useState<RestaurantMenu>();
+  console.log(props.id);
+  const filteredFoods = menus.filter((menu) =>
+    restaurantMenus?.foods.some((food) => food === menu.id)
+  );
+  console.log(filteredFoods);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const dataRestaurant = await getData(`restaurant/${props.id}`);
+        const dataMenus = await getData(`menu`);
+        const dataRestaurantMenus = await getData(
+          `restaurant_menu/${props.id}`
+        );
+        setRestaurant(dataRestaurant);
+        setMenu(dataMenus);
+        setRestaurantMenu(dataRestaurantMenus);
+      } catch (error) {
+        // Handle errors if needed
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [props.id]);
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -44,7 +74,7 @@ const Component = (props: Props) => {
           </View>
         </View>
         <View style={styles.desc}>
-          <Text style={styles.title}>Wijie Bar and Resto</Text>
+          <Text style={styles.title}>{restaurant?.title}</Text>
           <View style={styles.groupIcon}>
             <View style={styles.groupIcon}>
               <Icon
@@ -52,7 +82,7 @@ const Component = (props: Props) => {
                 size={20}
                 color={R.colors.secondary}
               />
-              <Text> 19 Km </Text>
+              <Text> {restaurant?.distance} Km </Text>
             </View>
             <View style={styles.groupIcon}>
               <Icon name={"star"} size={20} color={R.colors.green} />
@@ -74,38 +104,21 @@ const Component = (props: Props) => {
               viewmore: "View More",
             }}
           />
-            <ScrollView horizontal>
-          <View style={styles.menuWrapper}>
-              <Shop
-                source={{ image_url: require("../../res/image/menufood1.png") }}
-                text={{
-                  title: "Spacy fresh crab",
-                  string: "12 $",
-                }}
-              />
-              <Shop
-                source={{ image_url: require("../../res/image/menufood1.png") }}
-                text={{
-                  title: "Spacy fresh crab",
-                  string: "12 $",
-                }}
-              />
-              <Shop
-                source={{ image_url: require("../../res/image/menufood1.png") }}
-                text={{
-                  title: "Spacy fresh crab",
-                  string: "12 $",
-                }}
-              />
-              <Shop
-                source={{ image_url: require("../../res/image/menufood1.png") }}
-                text={{
-                  title: "Spacy fresh crab",
-                  string: "12 $",
-                }}
-              />
-          </View>
-            </ScrollView>
+          <ScrollView horizontal>
+            <View style={styles.menuWrapper}>
+              {filteredFoods.map((food) => (
+                <Shop
+                  source={{
+                    image_url: require(`../../res/image/${food.image_url}`),
+                  }}
+                  text={{
+                    title: `${food.food_name}`,
+                    string: `${food.price}`,
+                  }}
+                />
+              ))}
+            </View>
+          </ScrollView>
         </View>
         <View style={styles.commentSession}>
           <Text style={styles.commentFont}>Testimonials</Text>
@@ -132,14 +145,41 @@ const Component = (props: Props) => {
 };
 
 // create a component
-const Restaurant: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
+const Restaurant: React.FC<{
+  navigation: Navigator;
+  route: { params: { id: number } };
+}> = ({ navigation, route }) => {
+  const id = route.params.id;
+  const [restaurant, setRestaurant] = useState<Restaurant>();
+  console.log(id);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const dataRestaurant = await getData(`restaurant/${id}`);
+        setRestaurant(dataRestaurant);
+      } catch (error) {
+        // Handle errors if needed
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  console.log(restaurant);
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../../res/image/res1.png")}
-        style={styles.image}
-      />
-      <SwipeUp component={<Component navigation={navigation} />} />
+      {restaurant ? (
+        <>
+          <Image
+            source={require(`../../res/image/${restaurant.picture}`)}
+            style={styles.image}
+          />
+          <SwipeUp component={<Component navigation={navigation} id={id} />} />
+        </>
+      ) : (
+        <Text>Loading...</Text>
+      )}
     </View>
   );
 };

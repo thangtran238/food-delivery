@@ -26,7 +26,7 @@ const Shop = (props: Props) => {
         <View style={styles.container}>
             <Image source={imageSource} style={styles.image} />
             <Text style={styles.title}>{text.title}</Text>
-            <Text style={styles.time}>{text.string}</Text>
+            <Text style={styles.time}>{text.string} min(s)</Text>
         </View>
     );
 };

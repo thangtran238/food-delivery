@@ -123,7 +123,7 @@ export const Screen: Screen[] = [
     option: false,
   },
   // {
-  //   name: "Location",
+  //   name: "Destination",
   //   component: Destination,
   //   option: false
   // }

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Heading from "../../../components/Heading";
 import { GET_NAV } from "../../../util/constant";
 import SearchBarWithR from "../../../components/SearchBarWithR";
@@ -16,8 +16,29 @@ import Shop from "../../../components/Shop";
 import ViewMore from "../../../components/ViewMore";
 import R from "../../../R";
 import Item from "../../../components/Item";
+import { getData } from "../../../services/api";
 
 const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
+  const [menus, setMenu] = useState<Menu[]>([]);
+  const [restaurants, setRestaurant] = useState<Restaurant[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const dataMenu = await getData("menu");
+        const dataRestaurant = await getData("restaurant");
+
+        setMenu(dataMenu);
+        setRestaurant(dataRestaurant);
+      } catch (error) {
+        // Handle errors if needed
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <View style={styles.imageBackground}>
       <ImageBackground source={require("../../../../res/image/bg.png")}>
@@ -39,47 +60,21 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
 
           <ScrollView horizontal>
             <View style={styles.shop_container}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Restaurant")}
-              >
-                <Shop
-                  source={{
-                    image_url: require("../../../../res/image/Restaurant1.png"),
-                  }}
-                  text={{
-                    title: "Vergan Store",
-                    string: "12 minutes",
-                  }}
-                />
-              </TouchableOpacity>
-
-              <Shop
-                source={{
-                  image_url: require("../../../../res/image/Restaurant2.png"),
-                }}
-                text={{
-                  title: "Smart Resto",
-                  string: "18 minutes",
-                }}
-              />
-              <Shop
-                source={{
-                  image_url: require("../../../../res/image/Restaurant3.png"),
-                }}
-                text={{
-                  title: "Healthy Food",
-                  string: "8 minutes",
-                }}
-              />
-              <Shop
-                source={{
-                  image_url: require("../../../../res/image/Restaurant4.png"),
-                }}
-                text={{
-                  title: "Vergan Food",
-                  string: "13 minutes",
-                }}
-              />
+              {restaurants.map((restaurant) => (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Restaurant',{id: restaurant.id})}
+                >
+                  <Shop
+                    source={{
+                      image_url: require(`../../../../res/image/${restaurant.image}`),
+                    }}
+                    text={{
+                      title: restaurant.title,
+                      string: restaurant.distance,
+                    }}
+                  />
+                </TouchableOpacity>
+              ))}
             </View>
           </ScrollView>
           <TouchableOpacity onPress={() => navigation.navigate("PopularMenu")}>
@@ -90,35 +85,21 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
               }}
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Food")}>
+          {menus.map((menu) => (
+            <TouchableOpacity onPress={() => navigation.navigate("Food",{id :menu.id})}>
             <Item
               styleType="primary"
-              source={{ image_url: require("../../../../res/image/food1.png") }}
+              source={{ image_url: require(`../../../../res/image/${menu.image_url}`) }}
               text={{
-                food_name: "Herbal Pancake",
-                restaurant: "Wijie Resto",
-                price: 7,
+                food_name: menu.food_name,
+                restaurant: menu.restaurant,
+                price: menu.price,
               }}
-            />
+              />
+          
           </TouchableOpacity>
-          <Item
-            styleType="primary"
-            source={{ image_url: require("../../../../res/image/food2.png") }}
-            text={{
-              food_name: "Fruit Salad",
-              restaurant: "Warung Herbal",
-              price: 9,
-            }}
-          />
-          <Item
-            styleType="secondary"
-            source={{ image_url: require("../../../../res/image/food3.png") }}
-            text={{
-              food_name: "Green Noddle",
-              restaurant: "Warung Resto",
-              price: 12,
-            }}
-          />
+          ))}
+            
         </ScrollView>
       </ImageBackground>
     </View>

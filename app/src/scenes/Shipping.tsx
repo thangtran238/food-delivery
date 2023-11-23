@@ -34,6 +34,7 @@ const Shipping: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
                 image_url={require("../../res/image/detail1.png")}
                 type={"Order Location"}
                 text={"8502 Preston Rd. Inglewood, Maine 98380"}
+                onPress={() => navigation.navigate("Destination")}
               />
               <OrderCom
                 category="location"
