@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -7,12 +7,28 @@ import {
   ImageBackground,
   ScrollView,
   StatusBar,
+  TouchableOpacity,
 } from "react-native";
 import Heading from "../../../components/Heading";
 import Item from "../../../components/Item";
+import SearchBarWithR from "../../../components/SearchBarWithR";
 import R from "../../../R";
+import { getData } from "../../../services/api";
 // create a component
 const PopularMenu: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
+  const [menus, setMenu] = useState<Menu[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const dataMenu = await getData("menu");
+        setMenu(dataMenu);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -20,46 +36,28 @@ const PopularMenu: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
         style={styles.image}
       >
         <Heading navigation={navigation} />
+        <SearchBarWithR navigation={navigation} />
 
         <Text style={styles.popularTitle}>Popular Menu</Text>
         <ScrollView>
           <View style={styles.popularContainer}>
-            <Item
-              styleType="primary"
-              source={{ image_url: require("../../../../res/image/food1.png") }}
-              text={{
-                food_name: "Herbal Pancake",
-                restaurant: "Wijie Resto",
-                price: 7,
-              }}
-            />
-            <Item
-              styleType="primary"
-              source={{ image_url: require("../../../../res/image/food1.png") }}
-              text={{
-                food_name: "Herbal Pancake",
-                restaurant: "Wijie Resto",
-                price: 7,
-              }}
-            />
-            <Item
-              styleType="primary"
-              source={{ image_url: require("../../../../res/image/food1.png") }}
-              text={{
-                food_name: "Herbal Pancake",
-                restaurant: "Wijie Resto",
-                price: 7,
-              }}
-            />
-            <Item
-              styleType="primary"
-              source={{ image_url: require("../../../../res/image/food1.png") }}
-              text={{
-                food_name: "Herbal Pancake",
-                restaurant: "Wijie Resto",
-                price: 7,
-              }}
-            />
+            {menus.map((menu) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Food", { id: menu.id })}
+              >
+                <Item
+                  styleType="primary"
+                  source={{
+                    image_url: require(`../../../../res/image/${menu.image_url}`),
+                  }}
+                  text={{
+                    food_name: `${menu.food_name}`,
+                    restaurant: `${menu.restaurant}`,
+                    price: menu.price,
+                  }}
+                />
+              </TouchableOpacity>
+            ))}
           </View>
         </ScrollView>
         <StatusBar style="auto" />

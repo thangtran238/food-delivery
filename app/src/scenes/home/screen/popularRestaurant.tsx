@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -8,14 +8,29 @@ import {
   Image,
   ScrollView,
   StatusBar,
+  TouchableOpacity,
 } from "react-native";
 import Heading from "../../../components/Heading";
 import SearchBarWithR from "../../../components/SearchBarWithR";
 import Shop from "../../../components/Shop";
+import { getData } from "../../../services/api";
 // create a component
 const PopularRestaurant: React.FC<{ navigation: Navigator }> = ({
   navigation,
 }) => {
+  const [restaurants, setRestaurant] = useState<Restaurant[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const dataRestaurant = await getData("restaurant");
+        setRestaurant(dataRestaurant);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -28,9 +43,23 @@ const PopularRestaurant: React.FC<{ navigation: Navigator }> = ({
         <Text style={styles.popularTitle}>Popular Restaurant</Text>
 
         <ScrollView contentContainerStyle={styles.restaurantContainer}>
-          <Shop text={{ title: "Vegan Resto", time: "8" }} />
-          <Shop text={{ title: "Vegan Resto", time: "8" }} />
-          <Shop text={{ title: "Vegan Resto", time: "8" }} />
+          {restaurants.map((restaurant) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Restaurant", { id: restaurant.id });
+              }}
+            >
+              <Shop
+                text={{
+                  title: `${restaurant.title}`,
+                  string: `${restaurant.distance}`,
+                }}
+                source={{
+                  image_url: require(`../../../../res/image/${restaurant.image}`),
+                }}
+              />
+            </TouchableOpacity>
+          ))}
         </ScrollView>
 
         <StatusBar style="auto" />
