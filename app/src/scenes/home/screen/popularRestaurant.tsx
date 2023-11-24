@@ -50,6 +50,7 @@ const PopularRestaurant: React.FC<{ navigation: Navigator }> = ({
               }}
             >
               <Shop
+                key={restaurant.id}
                 text={{
                   title: `${restaurant.title}`,
                   string: `${restaurant.distance}`,

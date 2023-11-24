@@ -106,8 +106,9 @@ const Component = (props: Props) => {
           />
           <ScrollView horizontal>
             <View style={styles.menuWrapper}>
-              {filteredFoods.map((food) => (
+              {filteredFoods.map((food, index) => (
                 <Shop
+                  key={index}
                   source={{
                     image_url: require(`../../res/image/${food.image_url}`),
                   }}

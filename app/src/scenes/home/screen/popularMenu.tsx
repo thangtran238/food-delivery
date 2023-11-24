@@ -46,6 +46,7 @@ const PopularMenu: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
                 onPress={() => navigation.navigate("Food", { id: menu.id })}
               >
                 <Item
+                  key={menu.id}
                   styleType="primary"
                   source={{
                     image_url: require(`../../../../res/image/${menu.image_url}`),

@@ -18,15 +18,15 @@ export default function App() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authenticatedUser) => {
-        if (authenticatedUser) {
-          // User is signed in
-          setUser(authenticatedUser);
-        } else {
-          // No user is signed in
-          setUser(null);
-        }
-      });
-      return () => unsubscribe();
+      if (authenticatedUser) {
+        // User is signed in
+        setUser(authenticatedUser);
+      } else {
+        // No user is signed in
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
   }, [user]);
   console.log(user);
 
@@ -35,8 +35,9 @@ export default function App() {
       {!user ? (
         <NavigationContainer>
           <Stack.Navigator>
-          {AccessArr.map((screen) => (
+            {AccessArr.map((screen, index) => (
               <Stack.Screen
+                key={index}
                 name={screen.name}
                 component={screen.component}
                 options={{ headerShown: screen.option }}
@@ -52,8 +53,9 @@ export default function App() {
               component={TabNavigator}
               options={{ headerShown: false }}
             />
-            {ScreenArr.map((screen) => (
+            {ScreenArr.map((screen, index) => (
               <Stack.Screen
+                key={index}
                 name={screen.name}
                 component={screen.component}
                 options={{ headerShown: screen.option }}

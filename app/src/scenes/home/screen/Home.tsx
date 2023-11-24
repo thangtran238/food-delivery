@@ -62,9 +62,12 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
             <View style={styles.shop_container}>
               {restaurants.map((restaurant) => (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('Restaurant',{id: restaurant.id})}
+                  onPress={() =>
+                    navigation.navigate("Restaurant", { id: restaurant.id })
+                  }
                 >
                   <Shop
+                    key={restaurant.id}
                     source={{
                       image_url: require(`../../../../res/image/${restaurant.image}`),
                     }}
@@ -86,20 +89,23 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
             />
           </TouchableOpacity>
           {menus.map((menu) => (
-            <TouchableOpacity onPress={() => navigation.navigate("Food",{id :menu.id})}>
-            <Item
-              styleType="primary"
-              source={{ image_url: require(`../../../../res/image/${menu.image_url}`) }}
-              text={{
-                food_name: menu.food_name,
-                restaurant: menu.restaurant,
-                price: menu.price,
-              }}
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Food", { id: menu.id })}
+            >
+              <Item
+                key={menu.id}
+                styleType="primary"
+                source={{
+                  image_url: require(`../../../../res/image/${menu.image_url}`),
+                }}
+                text={{
+                  food_name: menu.food_name,
+                  restaurant: menu.restaurant,
+                  price: menu.price,
+                }}
               />
-          
-          </TouchableOpacity>
+            </TouchableOpacity>
           ))}
-            
         </ScrollView>
       </ImageBackground>
     </View>

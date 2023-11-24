@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getData = async (endpoint: string) => {
   try {
-    const response = await axios.get(`http://localhost:3000/${endpoint}`);
+    const response = await axios.get(`https://food-delivery-api-7yqp.onrender.com/${endpoint}`);
     const data = response.data;
     console.log("getData Response:", data);
     return data;

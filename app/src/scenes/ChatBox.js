@@ -59,7 +59,8 @@ export default function ChatBox(navigation) {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       console.log("querySnapshot unsusbscribe");
       setMessages(
-        querySnapshot.docs.map((doc) => ({
+        querySnapshot.docs.map((doc,index) => ({
+          key: index,
           _id: doc.data()._id,
           createdAt: doc.data().createdAt.toDate(),
           text: doc.data().text,
