@@ -56,7 +56,7 @@ const PopularRestaurant: React.FC<{ navigation: Navigator }> = ({
                   string: `${restaurant.distance}`,
                 }}
                 source={{
-                  image_url: require(`../../../../res/image/${restaurant.image}`),
+                  image_url:  require(`../../../../res/image/res1.png`),
                 }}
               />
             </TouchableOpacity>

@@ -11,6 +11,8 @@ import { useState } from "react";
 import Button from "../components/Button";
 import R from "../R";
 import Item_cart from "../components/Item_cart";
+import React from "react";
+
 
 type Props = {};
 

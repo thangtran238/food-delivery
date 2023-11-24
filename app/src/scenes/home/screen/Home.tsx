@@ -52,7 +52,7 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
           >
             <ViewMore
               text={{
-                title: "Popular Menu",
+                title: "Popular Restaurant",
                 viewmore: "View More",
               }}
             />
@@ -69,7 +69,7 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
                   <Shop
                     key={restaurant.id}
                     source={{
-                      image_url: require(`../../../../res/image/${restaurant.image}`),
+                      image_url: restaurant && restaurant.image ? require(`../../../../res/image/restaurant1.png`) : null,
                     }}
                     text={{
                       title: restaurant.title,
@@ -96,7 +96,7 @@ const Home: React.FC<{ navigation: Navigator }> = ({ navigation }) => {
                 key={menu.id}
                 styleType="primary"
                 source={{
-                  image_url: require(`../../../../res/image/${menu.image_url}`),
+                  image_url: menu && menu.image_url ? require(`../../../../res/image/food1.png`) : null,
                 }}
                 text={{
                   food_name: menu.food_name,

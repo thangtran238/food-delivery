@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  ImageBackground
 } from "react-native";
 import SwipeUp from "../components/SwipeUp";
 import { NavigationProp } from "@react-navigation/native";
@@ -135,12 +136,13 @@ const Food: React.FC<{
     };
     fetchData();
   }, [id]);
+  const picture = menu?.picture
   return (
     <View style={styles.container}>
       {menu ? (
         <>
-          <Image
-            source={require(`../../res/image/${menu?.picture}`)}
+          <ImageBackground
+            source={ require(`../../res/image/item1.png`)}
             style={styles.image}
           />
           <SwipeUp component={<Component navigation={navigation} id={id} />} />

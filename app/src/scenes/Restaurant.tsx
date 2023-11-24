@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  ImageBackground
 } from "react-native";
 import SwipeUp from "../components/SwipeUp";
 import { NavigationProp } from "@react-navigation/native";
@@ -110,7 +111,7 @@ const Component = (props: Props) => {
                 <Shop
                   key={index}
                   source={{
-                    image_url: require(`../../res/image/${food.image_url}`),
+                    image_url: food && food.image_url ? require(`../../res/image/food1.png`) : null,
                   }}
                   text={{
                     title: `${food.food_name}`,
@@ -166,14 +167,14 @@ const Restaurant: React.FC<{
 
     fetchData();
   }, [id]);
-
+  const picture = restaurant?.picture
   console.log(restaurant);
   return (
     <View style={styles.container}>
       {restaurant ? (
         <>
-          <Image
-            source={require(`../../res/image/${restaurant.picture}`)}
+          <ImageBackground
+            source={require(`../../res/image/res1.png`) }
             style={styles.image}
           />
           <SwipeUp component={<Component navigation={navigation} id={id} />} />
