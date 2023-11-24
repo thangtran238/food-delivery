@@ -66,27 +66,33 @@ const Component: React.FC<Props> = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-
+      <TouchableOpacity onPress={() => navigation.navigate("Voucher")}>
+      <AppOption
+        image={require("../../res/image/voucher.png")}
+        type="normal"
+        text="You Have 3 Vouchers"
+      />
+      </TouchableOpacity>
       <View style={styles.favorite}>
         <Text style={styles.font}>Favorite</Text>
         <View>
           <AppItem
             type="Buy Again"
-            image_url={"../../res/image/voucher.png"}
+            image_url={require("../../res/image/food1.png")}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
           />
           <AppItem
             type="Buy Again"
-            image_url={"../../res/image/voucher.png"}
+            image_url={require("../../res/image/food2.png")}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}
           />
           <AppItem
             type="Buy Again"
-            image_url={"../../res/image/voucher.png"}
+            image_url={require("../../res/image/food3.png")}
             title={"Spacy fresh crab"}
             restaurant={"Waroenk kita"}
             price={35}

@@ -78,7 +78,7 @@ const SwipeUp: React.FC<SwipeUpProps> = ({ component }) => {
   return (
     <Animated.View style={[styles.bottomSheet, bottomSheetAnimation]}>
       <View style={styles.draggableArea} {...panResponder.panHandlers}>
-        <View style={styles.dragHandle} />
+        <View style={styles.dragHandle}  />
       </View>
       {component}
     </Animated.View>
